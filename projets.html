@@ -1,164 +1,436 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projets — Maxence Grégoire</title>
+  <meta name="description" content="Projets de Maxence Grégoire : SmartCar, ECG et travaux électroniques GEII." />
 
-  <link rel="stylesheet" href="css/style.css" />
+  <!-- Polices : Inter + Playfair Display + Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&family=Roboto:wght@500;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css?v=2" />
+  <link rel="stylesheet" href="css/typography.css?v=2" />
+  <link rel="stylesheet" href="css/style2.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/geii-decorations.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+
+  <!-- Gestionnaire de thème -->
+  <script src="js/theme-manager.js?v=2"></script>
+  <!-- Migration des chemins d'images -->
+  <script src="js/migrate-paths.js"></script>
+  <!-- Bascule mode sombre/clair -->
+  <script src="js/dark-mode-toggle.js"></script>
 </head>
-
 <body class="projects-page">
+  <!-- Formes décoratives GEII -->
+  <div class="decorative-shapes">
+    <div class="circuit-trace circuit-1"></div>
+    <div class="circuit-trace circuit-2"></div>
+    <div class="wave wave-1"></div>
+    <div class="wave wave-2"></div>
+    <div class="wave wave-3"></div>
+    <div class="component resistor"></div>
+    <div class="component capacitor"></div>
+    <div class="component diode"></div>
+    <div class="component transistor"></div>
+    <div class="hex-grid hex-1"></div>
+    <div class="hex-grid hex-2"></div>
+    <div class="atom atom-1"><div class="atom-core"></div><div class="atom-orbit"></div></div>
+    <div class="atom atom-2"><div class="atom-core"></div><div class="atom-orbit"></div></div>
+    <div class="signal-wave signal-1"></div>
+    <div class="signal-wave signal-2"></div>
+    <div class="gradient-mesh mesh-1"></div>
+  </div>
+  <!-- Lien d'évitement -->
+  <a class="skip-link sr-only sr-only-focusable" href="#main">Aller au contenu principal</a>
 
-<header class="site-header">
-  <h1>Projets</h1>
-</header>
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-grid">
+      <div class="header-left">
+        <span class="logo">MG</span>
+      </div>
+      <h1 class="site-title">Projets</h1>
+      <nav class="header-right" aria-label="Navigation principale">
+        <ul class="nav">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="#portfolio">Projets</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="admin-login.html" title="Page d'administration">Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<main id="main">
+  <main id="main" role="main">
+    <!-- HERO projet vedette -->
+    <section class="section hero" aria-labelledby="hero-title" id="hero-section">
+      <div class="hero-grid">
+        <figure class="hero-photo">
+          <img id="hero-image" src="images/projects/projet-rm.jpeg" alt="Projet vedette" />
+        </figure>
+        <div class="hero-text hero-intro">
+          <h2 id="hero-title" class="sr-only">Projet vedette</h2>
+          <h3 class="section-title" id="hero-project-title">SmartCar — voiture connectée</h3>
+          <p class="intro-text" id="hero-project-desc">
+            Conception d'une voiture autonome : carte électronique personnalisée, microprocesseur embarqué,
+            commande à distance et tests de communication radio. Travail réalisé en équipe de 3, du schéma
+            à la validation sur banc.
+          </p>
+          <a class="btn-download" href="#portfolio">
+            <span class="btn-icon" aria-hidden="true">↓</span>
+            <span class="btn-text">Voir tous les projets</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
-  <!-- LISTE DES PROJETS -->
-  <section id="portfolio">
-    <h2>Projets</h2>
-    <div class="projects-grid" id="dynamic-projects"></div>
-  </section>
+    <!-- LISTE DES PROJETS -->
+    <section id="portfolio" class="section projects">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <h2 class="section-title" style="margin-bottom: 0;">Projets récents</h2>
+        <button id="add-project-btn" class="btn-add-project" aria-label="Ajouter un nouveau projet" title="Ajouter un projet">+</button>
+      </div>
+      <div class="projects-grid" id="dynamic-projects">
+        <!-- Les projets s'affichent dynamiquement ici -->
+      </div>
+    </section>
 
-  <!-- GALERIE -->
-  <section>
-    <h2>Galerie</h2>
-    <div class="projects-grid" id="dynamic-gallery"></div>
-  </section>
+    <!-- GALERIE SIMPLE -->
+    <section class="section contact" aria-labelledby="galerie-title">
+      <h2 id="galerie-title" class="section-title">Galerie</h2>
+      <div class="projects-grid" id="dynamic-gallery">
+        <!-- La galerie s'affiche dynamiquement ici -->
+      </div>
+    </section>
+  </main>
 
-</main>
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <small>© <span id="year"></span> Maxence Grégoire. Tous droits réservés.</small>
+  </footer>
 
-<footer class="site-footer">
-  <small>© <span id="year"></span> Maxence Grégoire</small>
-</footer>
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Aperçu de l'image">
+    <div class="lightbox-content">
+      <button class="lightbox-close" aria-label="Fermer la lightbox">×</button>
+      <img id="lightbox-img" src="" alt="" />
+    </div>
+  </div>
 
-<!-- LIGHTBOX -->
-<div id="lightbox" class="lightbox" aria-hidden="true">
-  <button class="lightbox-close">×</button>
-  <img id="lightbox-img" alt="">
-</div>
+  <!-- Modal d'authentification pour l'ajout de projet -->
+  <div id="auth-modal" class="quick-add-modal" aria-hidden="true" role="dialog" aria-label="Authentification requise">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Fermer">×</button>
+      <h2>Authentification requise</h2>
+      <p style="color: var(--muted); margin-bottom: 20px; text-align: center;">Entrez le mot de passe administrateur pour ajouter un projet</p>
+      <form id="auth-form" class="quick-add-form">
+        <div class="form-group">
+          <label for="auth-password">Mot de passe</label>
+          <input type="password" id="auth-password" required placeholder="Entrez le mot de passe" autocomplete="current-password" />
+        </div>
+        <div id="auth-error" class="error-message" style="display: none; margin-bottom: 16px;"></div>
+        <button type="submit" class="btn-submit">Vérifier</button>
+      </form>
+    </div>
+  </div>
 
-<script>
-/* ===============================
-   DONNÉES DES PROJETS
-================================ */
-const ProjectData = {
-  defaultProjects: [
-    {
-      id: 1,
-      title: "Projet EN",
-      description: "Filtre de lissage analogique (structure de Rauch).",
-      image: "images/projects/EN.jpeg"
-    },
-    {
-      id: 2,
-      title: "Projet banc de test",
-      description: "Mesures HF sur ligne microstrip.",
-      image: "images/projects/projet-banc-de-test.jpeg"
-    },
-    {
-      id: 3,
-      title: "SmartCar",
-      description: "Voiture connectée à microcontrôleur.",
-      image: "images/projects/projet-rm.jpeg"
-    },
-    {
-      id: 4,
-      title: "Projet ECG",
-      description: "Acquisition et filtrage analogique ECG.",
-      image: "images/projects/ECG.jpeg"
-    },
-    {
-      id: 5,
-      title: "Projet IE — Dino Game",
-      description: "Jeu type Dino Game (SAE IE GEII).",
-      image: "images/projects/IE.jpeg"
+  <!-- Modal d'ajout de projet rapide -->
+  <div id="quick-add-modal" class="quick-add-modal" aria-hidden="true" role="dialog" aria-label="Ajouter un nouveau projet">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Fermer">×</button>
+      <h2>Ajouter un nouveau projet</h2>
+      <form id="quick-add-form" class="quick-add-form">
+        <div class="form-group">
+          <label for="quick-title">Titre du projet</label>
+          <input type="text" id="quick-title" required placeholder="Ex: Mon Projet" />
+        </div>
+        <div class="form-group">
+          <label for="quick-desc">Description</label>
+          <textarea id="quick-desc" required placeholder="Décrivez votre projet..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Image</label>
+          <div class="drag-drop-zone" id="drag-drop-quick">
+            <input type="file" id="quick-image-file" name="image-file" accept="image/*" style="display: none;" />
+            <svg class="drag-drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+            <p class="drag-drop-text">Glissez une image ici ou <span class="drag-drop-link">cliquez pour sélectionner</span></p>
+            <p class="drag-drop-hint">PNG, JPG, GIF (max 5MB)</p>
+          </div>
+          <input type="hidden" id="quick-image" required />
+          <small id="quick-image-name" class="image-feedback" style="display: none;"></small>
+        </div>
+        <button type="submit" class="btn-submit">Ajouter</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // ===== DONNÉES DES PROJETS =====
+    const ProjectData = {
+      defaultProjects: [
+        {
+          id: 1,
+          title: 'Projet EN',
+          description: 'J\'ai conçu et simulé un filtre de lissage conforme au cahier des charges, en respectant la bande passante imposée et la structure de Rauch. J\'ai ensuite participé au routage du circuit imprimé et à son implantation, puis j\'ai testé le filtre avec la carte Nucleo pour vérifier son rôle dans la chaîne d\'acquisition audio et valider son fonctionnement avant intégration dans le système complet.',
+          image: 'images/projects/EN.jpeg'
+        },
+        {
+          id: 2,
+          title: 'Projet banc de test',
+          description: 'J\'ai caractérisé une ligne microstrip, réalisé des mesures HF sur un capteur de liquide et étudié l\'impact d\'une fiole sur l\'admittance. J\'ai aussi analysé la documentation de l\'ARV et rédigé une fiche d\'aide expliquant comment reproduire les tests manuels, étape préparatoire à l\'automatisation sous Python.',
+          image: 'images/projects/projet banc de test .jpeg'
+        },
+        {
+          id: 3,
+          title: 'SmartCar',
+          description: 'Carte électronique dédiée, microcontrôleur embarqué et pilotage à distance.',
+          image: 'images/projects/projet-rm.jpeg'
+        },
+        {
+          id: 4,
+          title: 'Projet ECG',
+          description: 'Création d\'un ECG en groupe : acquisition du signal, filtrage analogique et affichage.',
+          image: 'images/projects/ECG.jpeg'
+        },
+        {
+          id: 5,
+          title: 'Projet IE — Dino Game',
+          description: 'Dans le cadre de notre SAE IE à l\'IUT GEII Toulouse, en collaboration avec Nathan Boumadi, nous avons développé un petit jeu inspiré du célèbre Dino Game de Google Chrome. Un projet mêlant programmation et créativité.',
+          image: 'images/projects/IE.jpeg'
+        }
+      ],
+
+      getProjects() {
+        const stored = localStorage.getItem('projects');
+        if (stored) {
+          try {
+            return JSON.parse(stored);
+          } catch (e) {
+            return this.defaultProjects;
+          }
+        }
+        return this.defaultProjects;
+      }
+    };
+
+    // ===== RENDU DES PROJETS =====
+    function renderDynamicProjects() {
+      const projects = ProjectData.getProjects();
+      const projectsGrid = document.getElementById('dynamic-projects');
+      const galleryGrid = document.getElementById('dynamic-gallery');
+
+      projectsGrid.innerHTML = projects.map(project => `
+        <article class="card" id="project-${project.id}">
+          <div class="card-thumb" aria-hidden="true">
+            <img src="${project.image}" alt="${project.title}" onerror="this.src='images/projects/placeholder.jpeg'" />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">${project.title}</h3>
+            <p class="card-desc">${project.description}</p>
+          </div>
+        </article>
+      `).join('');
+
+      galleryGrid.innerHTML = projects.map(project => `
+        <article class="card" id="gallery-${project.id}">
+          <div class="card-thumb">
+            <button class="lightbox-btn" data-lightbox="${project.image}" data-alt="${project.title}" aria-label="Voir l'image en grand">
+              <img src="${project.image}" alt="${project.title}" onerror="this.src='images/projects/placeholder.jpeg'" />
+            </button>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">${project.title}</h3>
+            <p class="card-desc">${project.description}</p>
+          </div>
+        </article>
+      `).join('');
+
+      // Réinitialiser les événements lightbox
+      initLightbox();
     }
-  ],
 
-  getProjects() {
-    const stored = localStorage.getItem("projects");
-    if (stored) {
-      try {
-        const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-      } catch (e) {}
+    (function () {
+      var y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
+
+    // Lightbox functionality
+    function initLightbox() {
+      var lightbox = document.getElementById('lightbox');
+      var lightboxImg = document.getElementById('lightbox-img');
+      var lightboxBtns = document.querySelectorAll('.lightbox-btn');
+      var closeBtn = document.querySelector('.lightbox-close');
+
+      lightboxBtns.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var src = this.getAttribute('data-lightbox');
+          var alt = this.getAttribute('data-alt');
+          lightboxImg.src = src;
+          lightboxImg.alt = alt;
+          lightbox.setAttribute('aria-hidden', 'false');
+          lightbox.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      closeBtn.addEventListener('click', function() {
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      });
+
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+          closeBtn.click();
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+          closeBtn.click();
+        }
+      });
     }
-    return this.defaultProjects;
-  }
-};
 
-/* ===============================
-   INITIALISATION DU STORAGE
-================================ */
-(function () {
-  if (!localStorage.getItem("projects")) {
-    localStorage.setItem(
-      "projects",
-      JSON.stringify(ProjectData.defaultProjects)
-    );
-  }
-})();
+    // Initialiser les projets au chargement
+    document.addEventListener('DOMContentLoaded', function() {
+      renderDynamicProjects();
 
-/* ===============================
-   RENDU DES PROJETS
-================================ */
-function renderDynamicProjects() {
-  const projects = ProjectData.getProjects();
-  const grid = document.getElementById("dynamic-projects");
-  const gallery = document.getElementById("dynamic-gallery");
+      // ===== AUTHENTIFICATION POUR L'AJOUT DE PROJET =====
+      const ADMIN_PASSWORD = '1234';
+      var addBtn = document.getElementById('add-project-btn');
+      var authModal = document.getElementById('auth-modal');
+      var authForm = document.getElementById('auth-form');
+      var authPassword = document.getElementById('auth-password');
+      var authError = document.getElementById('auth-error');
+      var authCloseBtn = authModal.querySelector('.modal-close');
 
-  grid.innerHTML = projects.map(p => `
-    <article class="card">
-      <img src="${p.image}" alt="${p.title}"
-           onerror="this.src='images/projects/placeholder.jpeg'">
-      <h3>${p.title}</h3>
-      <p>${p.description}</p>
-    </article>
-  `).join("");
+      addBtn.addEventListener('click', function() {
+        // Afficher le modal d'authentification
+        authModal.setAttribute('aria-hidden', 'false');
+        authPassword.value = '';
+        authError.style.display = 'none';
+        authPassword.focus();
+        document.body.style.overflow = 'hidden';
+      });
 
-  gallery.innerHTML = projects.map(p => `
-    <article class="card">
-      <button class="lightbox-btn"
-              data-img="${p.image}"
-              data-alt="${p.title}">
-        <img src="${p.image}" alt="${p.title}">
-      </button>
-    </article>
-  `).join("");
-}
+      authCloseBtn.addEventListener('click', function() {
+        authModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = 'auto';
+      });
 
-/* ===============================
-   LIGHTBOX
-================================ */
-document.addEventListener("click", e => {
-  const btn = e.target.closest(".lightbox-btn");
-  if (!btn) return;
+      authModal.addEventListener('click', function(e) {
+        if (e.target === authModal) {
+          authCloseBtn.click();
+        }
+      });
 
-  const img = document.getElementById("lightbox-img");
-  img.src = btn.dataset.img;
-  img.alt = btn.dataset.alt;
+      authForm.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-  document.getElementById("lightbox").style.display = "flex";
-  document.body.style.overflow = "hidden";
-});
+        if (authPassword.value === ADMIN_PASSWORD) {
+          // Mot de passe correct
+          authModal.setAttribute('aria-hidden', 'true');
+          openQuickAddModal();
+          authPassword.value = '';
+        } else {
+          // Mot de passe incorrect
+          authError.textContent = 'Mot de passe incorrect. Veuillez réessayer.';
+          authError.style.display = 'block';
+          authPassword.value = '';
+          authPassword.focus();
+        }
+      });
 
-document.querySelector(".lightbox-close").addEventListener("click", () => {
-  document.getElementById("lightbox").style.display = "none";
-  document.body.style.overflow = "auto";
-});
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && authModal.getAttribute('aria-hidden') === 'false') {
+          authCloseBtn.click();
+        }
+      });
 
-/* ===============================
-   CHARGEMENT PAGE
-================================ */
-document.addEventListener("DOMContentLoaded", () => {
-  renderDynamicProjects();
-  document.getElementById("year").textContent = new Date().getFullYear();
-});
-</script>
+      // ===== QUICK ADD PROJECT MODAL =====
+      var modal = document.getElementById('quick-add-modal');
+      var closeBtn = modal.querySelector('.modal-close');
+      var form = document.getElementById('quick-add-form');
 
+      function openQuickAddModal() {
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      closeBtn.addEventListener('click', function() {
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = 'auto';
+        form.reset();
+      });
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeBtn.click();
+        }
+      });
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var title = document.getElementById('quick-title').value.trim();
+        var description = document.getElementById('quick-desc').value.trim();
+        var image = document.getElementById('quick-image').value.trim();
+
+        if (!title || !description || !image) {
+          alert('Veuillez remplir tous les champs');
+          return;
+        }
+
+        // Ajouter le projet via la même logique que admin.js
+        var projects = ProjectData.getProjects();
+        var newId = projects.length > 0 ? Math.max(...projects.map(p => p.id)) + 1 : 1;
+        var newProject = { id: newId, title: title, description: description, image: image };
+        projects.push(newProject);
+        localStorage.setItem('projects', JSON.stringify(projects));
+
+        // Fermer le modal et rafraîchir
+        closeBtn.click();
+        renderDynamicProjects();
+        alert('Projet ajouté avec succès !');
+      });
+
+      // Fermer le modal avec Échap
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
+          closeBtn.click();
+        }
+      });
+    });
+  </script>
+  
+  <!-- Chargement dynamique des projets -->
+  <script src="js/load-projects-page.js"></script>
+  
+  <script src="js/drag-drop.js"></script>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <small>© <span id="year"></span> Maxence Grégoire. Tous droits réservés.</small>
+  </footer>
+
+  <!-- Floating LinkedIn button -->
+  <a class="floating-linkedin" href="https://www.linkedin.com/in/maxence-gregoire-8345722ba/" target="_blank" rel="noopener noreferrer" aria-label="Mon LinkedIn">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3.5 8.98h3v11.52h-3V8.98Zm5.5 0h2.88v1.57h.04c.4-.76 1.37-1.57 2.83-1.57 3.03 0 3.59 2 3.59 4.59v6.93h-3v-6.14c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.58-2.34 3.22v6.25h-3V8.98Z"/>
+    </svg>
+  </a>
 </body>
 </html>
