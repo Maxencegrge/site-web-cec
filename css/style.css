@@ -1093,33 +1093,6 @@ h6, .h6 { font-family: var(--font-primary); font-size: var(--text-sm); font-weig
   height: 100%;
   object-fit: cover;
 }
-/* ===== QUICK ADD PROJECT BUTTON ===== */
-.btn-add-project {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  font-size: 32px;
-  font-weight: 300;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s ease, background 0.3s ease;
-  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
-}
-
-.btn-add-project:hover {
-  transform: scale(1.1);
-  background: #5a54e6;
-  box-shadow: 0 6px 16px rgba(108, 99, 255, 0.4);
-}
-
-.btn-add-project:active {
-  transform: scale(0.95);
-}
 
 /* ===== QUICK ADD MODAL ===== */
 .quick-add-modal {
