@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Maxence Grégoire — Portfolio</title>
+  <meta name="description" content="Portfolio de Maxence Grégoire : projets, CV et contact. Étudiant en culture &amp; communication." />
+
+  <!-- Polices : Inter + Playfair Display + Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&family=Roboto:wght@500;700&display=swap" rel="stylesheet" />
+
+  <!-- Feuille de styles -->
+  <link rel="stylesheet" href="css/style.css?v=2" />
+  <link rel="stylesheet" href="css/typography.css?v=2" />
+  <link rel="stylesheet" href="css/style2.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/geii-decorations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+  <!-- Gestionnaire de thème -->
+  <script src="js/theme-manager.js?v=2"></script>
+  <!-- Migration des chemins d'images -->
+  <script src="js/migrate-paths.js"></script>
+  <!-- Bascule mode sombre/clair -->
+  <script src="js/dark-mode-toggle.js"></script>
+</head>
+<body>
+
+  <!-- Formes décoratives GEII -->
+  <div class="decorative-shapes">
+    <div class="circuit-trace circuit-1"></div>
+    <div class="circuit-trace circuit-2"></div>
+    <div class="wave wave-1"></div>
+    <div class="wave wave-2"></div>
+    <div class="wave wave-3"></div>
+    <div class="component resistor"></div>
+    <div class="component capacitor"></div>
+    <div class="component diode"></div>
+    <div class="component transistor"></div>
+    <div class="hex-grid hex-1"></div>
+    <div class="hex-grid hex-2"></div>
+    <div class="atom atom-1"><div class="atom-core"></div><div class="atom-orbit"></div></div>
+    <div class="atom atom-2"><div class="atom-core"></div><div class="atom-orbit"></div></div>
+    <div class="signal-wave signal-1"></div>
+    <div class="signal-wave signal-2"></div>
+    <div class="gradient-mesh mesh-1"></div>
+  </div>
+
+  <!-- Lien d'évitement -->
+  <a class="skip-link sr-only sr-only-focusable" href="#main">Aller au contenu principal</a>
+
+  <!-- Formes décoratives -->
+  <div class="shape shape-1" aria-hidden="true"></div>
+  <div class="shape shape-2" aria-hidden="true"></div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="header-grid">
+      <div class="header-left">
+        <!-- Logo texte (remplace par <img> si tu as un visuel) -->
+        <span class="logo">
+          MG
+        </span>
+      </div>
+
+      <h1 class="site-title">Maxence Grégoire</h1>
+
+      <nav class="header-right" aria-label="Navigation principale">
+        <ul class="nav">
+          <li><a href="projets.html">Projets</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="admin-login.html" title="Page d'administration">Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===== HERO ===== -->
+    <section class="hero section" aria-labelledby="intro-title">
+      <div class="hero-grid">
+        <figure class="hero-photo">
+          <img src="images/projects/geii.jpeg" alt="Photo de Maxence Grégoire" />
+        </figure>
+
+        <div class="hero-text hero-intro">
+          <h2 id="intro-title" class="sr-only">Présentation</h2>
+          <p class="intro-text">
+            Étudiant en 2ᵉ année de BUT GEII (Génie Électrique et Informatique Industrielle), spécialité Électronique et Systèmes Embarqués à l'IUT Paul Sabatier, je poursuis ma formation en alternance chez Tisséo Voyageur en tant que technicien réseau et télécom. J'y participe à la maintenance et au déploiement des infrastructures de communication, tout en développant mes compétences en systèmes embarqués et en réseaux.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTENU : Projets / CV ===== -->
+    <section class="content-two-columns section">
+      <!-- Colonne gauche : projets -->
+      <div class="projects" id="projets">
+        <h2 class="section-title">Les derniers projets</h2>
+
+        <div class="projects-grid">
+          <article class="card">
+            <div class="card-thumb" aria-hidden="true">
+              <img src="images/projects/EN.jpeg" alt="Projet EN" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Projet EN</h3>
+              <p class="card-desc">j’ai conçu et simulé un filtre de lissage conforme au cahier des charges, en respectant la bande passante imposée et la structure de Rauch. J’ai ensuite participé au routage du circuit imprimé et à son implantation, puis j’ai testé le filtre avec la carte Nucleo pour vérifier son rôle dans la chaîne d’acquisition audio et valider son fonctionnement avant intégration dans le système complet .</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-thumb" aria-hidden="true">
+              <a href="projets.html"><img src="images/projects/projet banc de test .jpeg" alt="banc de test " /></a>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title"><a href="projet#bancdetest">Projet banc de test</a></h3>
+              <p class="card-desc">J’ai caractérisé une ligne microstrip, 
+                réalisé des mesures HF sur un capteur de liquide et étudié 
+                l’impact d’une fiole sur l’admittance. J’ai aussi analysé 
+                la documentation de l’ARV et rédigé une fiche d’aide
+                 expliquant comment reproduire les tests manuels, étape préparatoire à l’automatisation sous Python..</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Colonne droite : CV -->
+      <aside class="cv" aria-label="CV">
+        <h2 class="section-title sr-only">CV</h2>
+
+        <figure class="cv-preview" aria-label="Aperçu du CV">
+          <embed src="assets/CV_Maxence_Gregoire.pdf" type="application/pdf" />
+        </figure>
+
+        <a href="assets/CV_Maxence_Gregoire.pdf" class="btn-download" download>
+          <span class="btn-icon" aria-hidden="true">⬇</span>
+          <span class="btn-text">Télécharger mon CV</span>
+        </a>
+      </aside>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="section-title">Partenaire</h2>
+      <div class="partner-info">
+        <div class="partner-logo">
+          <a href="https://iut-ge2i.univ-tlse3.fr/integer-notre-formation" target="_blank" rel="noopener noreferrer">
+            <img src="images/projects/Logo_IUT_Toulouse_GEII_couleurs.png" alt="Logo IUT Paul Sabatier" />
+          </a>
+        </div>
+        <div class="partner-details">
+          <h3>IUT Paul Sabatier</h3>
+          <p>115c route de Narbonne<br />31100 Toulouse</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <small>© <span id="year"></span> Maxence Grégoire. Tous droits réservés.</small>
+  </footer>
+
+  <script>
+    // Année dynamique
+    (function () {
+      var y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
+  </script>
+  
+  <!-- Chargement dynamique des projets récents -->
+  <script src="js/load-projects.js"></script>
+  
+  <!-- Floating LinkedIn button -->
+  <a class="floating-linkedin" href="https://www.linkedin.com/in/maxence-gregoire-8345722ba/" target="_blank" rel="noopener noreferrer" aria-label="Mon LinkedIn">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3.5 8.98h3v11.52h-3V8.98Zm5.5 0h2.88v1.57h.04c.4-.76 1.37-1.57 2.83-1.57 3.03 0 3.59 2 3.59 4.59v6.93h-3v-6.14c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.58-2.34 3.22v6.25h-3V8.98Z"/>
+    </svg>
+  </a>
+</body>
+</html>

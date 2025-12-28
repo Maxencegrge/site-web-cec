@@ -1,0 +1,360 @@
+/* ===== FORMES DÉCORATIVES GEII ===== */
+
+/* Conteneur des formes décoratives */
+.decorative-shapes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* === CIRCUIT ÉLECTRONIQUE === */
+.circuit-trace {
+  position: absolute;
+  border: 2px solid var(--primary);
+  opacity: 0.1;
+  border-radius: 50%;
+}
+
+.circuit-1 {
+  top: 5%;
+  right: 10%;
+  width: 300px;
+  height: 300px;
+  animation: rotate 20s linear infinite;
+}
+
+.circuit-2 {
+  bottom: 15%;
+  left: 5%;
+  width: 250px;
+  height: 250px;
+  animation: rotate-reverse 25s linear infinite;
+}
+
+/* === ONDES ÉLECTROMAGNÉTIQUES === */
+.wave {
+  position: absolute;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  opacity: 0.08;
+}
+
+.wave-1 {
+  top: 20%;
+  left: 15%;
+  width: 150px;
+  height: 150px;
+  animation: wave-pulse 3s ease-in-out infinite;
+}
+
+.wave-2 {
+  top: 40%;
+  right: 20%;
+  width: 200px;
+  height: 200px;
+  animation: wave-pulse 4s ease-in-out infinite 0.5s;
+}
+
+.wave-3 {
+  bottom: 20%;
+  right: 10%;
+  width: 180px;
+  height: 180px;
+  animation: wave-pulse 3.5s ease-in-out infinite 1s;
+}
+
+@keyframes wave-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.08;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.02;
+  }
+}
+
+/* === COMPOSANTS ÉLECTRONIQUES === */
+.component {
+  position: absolute;
+  opacity: 0.12;
+}
+
+/* Résistor */
+.resistor {
+  top: 10%;
+  left: 50%;
+  width: 80px;
+  height: 40px;
+  border: 2px solid var(--primary);
+  background: linear-gradient(90deg, transparent 20%, var(--primary) 20%, var(--primary) 80%, transparent 80%);
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+/* Condensateur */
+.capacitor {
+  bottom: 30%;
+  left: 10%;
+  width: 60px;
+  height: 60px;
+  border-top: 3px solid var(--primary);
+  border-bottom: 3px solid var(--primary);
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Diode */
+.diode {
+  top: 60%;
+  right: 15%;
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--primary);
+  border-radius: 50% 50% 0 0;
+  animation: float 3.5s ease-in-out infinite 0.5s;
+}
+
+/* Transistor */
+.transistor {
+  top: 35%;
+  right: 5%;
+  width: 70px;
+  height: 70px;
+  border: 2px solid var(--primary);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  animation: rotate 30s linear infinite;
+}
+
+/* === GRILLE HEXAGONALE === */
+.hex-grid {
+  position: absolute;
+  opacity: 0.05;
+}
+
+.hex-1 {
+  top: 50%;
+  left: 20%;
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(30deg, transparent 24%, var(--primary) 25%, var(--primary) 26%, transparent 27%, transparent 74%, var(--primary) 75%, var(--primary) 76%, transparent 77%, transparent),
+              linear-gradient(60deg, transparent 24%, var(--primary) 25%, var(--primary) 26%, transparent 27%, transparent 74%, var(--primary) 75%, var(--primary) 76%, transparent 77%, transparent);
+  background-size: 50px 100%;
+  background-position: 0 0;
+  animation: float 5s ease-in-out infinite;
+}
+
+.hex-2 {
+  bottom: 10%;
+  right: 5%;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, var(--primary) 2px, transparent 2px);
+  background-size: 40px 40px;
+  animation: float 6s ease-in-out infinite 1s;
+}
+
+/* === ORBITES ATOMIQUES === */
+.atom {
+  position: absolute;
+  opacity: 0.1;
+}
+
+.atom-core {
+  width: 20px;
+  height: 20px;
+  background: var(--primary);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.atom-orbit {
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.atom-1 {
+  top: 15%;
+  left: 5%;
+  width: 150px;
+  height: 150px;
+}
+
+.atom-1 .atom-core {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.atom-1 .atom-orbit {
+  width: 150px;
+  height: 150px;
+  animation: rotate 15s linear infinite;
+}
+
+.atom-2 {
+  bottom: 10%;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+}
+
+.atom-2 .atom-core {
+  animation: pulse 2.5s ease-in-out infinite 0.3s;
+}
+
+.atom-2 .atom-orbit {
+  width: 120px;
+  height: 120px;
+  animation: rotate-reverse 12s linear infinite;
+}
+
+/* === SYMBOLES ÉLECTRIQUES === */
+.symbol {
+  position: absolute;
+  opacity: 0.08;
+  font-size: 40px;
+  animation: float 4s ease-in-out infinite;
+}
+
+.symbol-1 {
+  top: 25%;
+  right: 30%;
+  content: '⚛';
+}
+
+.symbol-2 {
+  bottom: 40%;
+  right: 40%;
+  animation-delay: 1s;
+  content: '⚡';
+}
+
+/* === SIGNAL WAVE === */
+.signal-wave {
+  position: absolute;
+  width: 300px;
+  height: 100px;
+  opacity: 0.08;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100"><path d="M0,50 Q75,0 150,50 T300,50" stroke="%236C63FF" stroke-width="2" fill="none"/></svg>') repeat-x;
+  animation: slide 10s linear infinite;
+}
+
+.signal-1 {
+  top: 30%;
+  left: 0;
+  animation-duration: 8s;
+}
+
+.signal-2 {
+  bottom: 25%;
+  right: 0;
+  animation-duration: 12s;
+  animation-direction: reverse;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(300px);
+  }
+}
+
+/* === GRILLE DÉGRADÉE === */
+.gradient-mesh {
+  position: absolute;
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.mesh-1 {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--primary) 1px, transparent 1px) 0 0 / 40px 40px,
+              linear-gradient(-45deg, var(--primary) 1px, transparent 1px) 0 0 / 40px 40px;
+  animation: float 20s ease-in-out infinite;
+}
+
+/* === ANIMATIONS SUPPLÉMENTAIRES === */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .circuit-1,
+  .circuit-2,
+  .wave-1,
+  .wave-2,
+  .wave-3 {
+    opacity: 0.04;
+  }
+
+  .component,
+  .atom,
+  .symbol {
+    opacity: 0.06;
+  }
+
+  .signal-wave {
+    opacity: 0.04;
+  }
+}
+
+/* === DARK MODE === */
+@media (prefers-color-scheme: dark) {
+  .circuit-trace,
+  .wave,
+  .component,
+  .hex-grid,
+  .atom,
+  .signal-wave {
+    opacity: 0.15;
+  }
+}

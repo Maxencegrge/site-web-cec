@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Contact — Maxence Grégoire</title>
+  <meta name="description" content="Contactez Maxence Grégoire pour toute demande de collaboration, question ou information. CV à gauche, formulaire à droite." />
+
+  <!-- Polices : Inter + Playfair Display + Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&family=Roboto:wght@500;700&display=swap" rel="stylesheet" />
+
+  <!-- Feuilles de styles -->
+  <link rel="stylesheet" href="css/style.css?v=2" />
+  <link rel="stylesheet" href="css/typography.css?v=2" />
+  <link rel="stylesheet" href="css/style2.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/geii-decorations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+  <!-- Gestionnaire de thème -->
+  <script src="js/theme-manager.js?v=2"></script>
+  <!-- Migration des chemins d'images -->
+  <script src="js/migrate-paths.js"></script>
+  <!-- Bascule mode sombre/clair -->
+  <script src="js/dark-mode-toggle.js"></script>
+</head>
+<body>
+
+  <!-- Formes décoratives GEII -->
+  <div class="decorative-shapes">
+    <div class="circuit-trace circuit-1"></div>
+    <div class="circuit-trace circuit-2"></div>
+    <div class="wave wave-1"></div>
+    <div class="wave wave-2"></div>
+    <div class="wave wave-3"></div>
+    <div class="component resistor"></div>
+    <div class="component capacitor"></div>
+    <div class="component diode"></div>
+    <div class="component transistor"></div>
+    <div class="hex-grid hex-1"></div>
+    <div class="hex-grid hex-2"></div>
+    <div class="atom atom-1"><div class="atom-core"></div><div class="atom-orbit"></div></div>
+    <div class="atom atom-2"><div class="atom-core"></div><div class="atom-orbit"></div></div>
+    <div class="signal-wave signal-1"></div>
+    <div class="signal-wave signal-2"></div>
+    <div class="gradient-mesh mesh-1"></div>
+  </div>
+
+  <!-- Lien d'évitement -->
+  <a class="skip-link sr-only sr-only-focusable" href="#main">Aller au contenu principal</a>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="header-grid">
+      <div class="header-left">
+        <a href="index.html" class="logo">MG</a>
+      </div>
+
+      <h1 class="site-title">Maxence Grégoire</h1>
+
+      <nav class="header-right" aria-label="Navigation principale">
+        <ul class="nav">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="projets.html">Projets</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="admin-login.html" title="Page d'administration">Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===== PAGE CONTACT ===== -->
+    <section class="section contact-page" aria-labelledby="contact-title">
+      <div class="contact-container">
+        <h2 id="contact-title" class="section-title">Contactez-moi</h2>
+
+        <div class="contact-columns">
+          <!-- Colonne gauche : CV -->
+          <aside class="cv-panel" aria-label="Mon CV">
+            <figure class="cv-preview" aria-label="Aperçu du CV">
+              <embed src="assets/CV_Maxence_Gregoire.pdf" type="application/pdf" />
+            </figure>
+            <a href="assets/CV_Maxence_Gregoire.pdf" class="btn-download" download>
+              <span class="btn-icon" aria-hidden="true">⬇</span>
+              <span class="btn-text">Télécharger mon CV</span>
+            </a>
+          </aside>
+
+          <!-- Colonne droite : formulaire + infos -->
+          <div class="form-panel">
+            <!-- Formulaire de contact -->
+            <form id="contactForm" class="contact-form" action="#" method="post">
+              <div class="form-group">
+                <label for="name">Nom complet <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required placeholder="Votre nom" autocomplete="name" />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="votre.email@exemple.com" autocomplete="email" />
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Sujet <span class="required">*</span></label>
+                <input type="text" id="subject" name="subject" required placeholder="Objet de votre message" />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message <span class="required">*</span></label>
+                <textarea id="message" name="message" rows="6" required placeholder="Votre message..."></textarea>
+              </div>
+
+              <button type="submit" class="btn-submit">
+                <span class="btn-icon" aria-hidden="true">📧</span>
+                <span class="btn-text">Envoyer le message</span>
+              </button>
+            </form>
+
+            <!-- Informations de contact alternatives -->
+            <div class="contact-info">
+              <h3 class="info-title">Autres moyens de contact</h3>
+
+              <div class="info-items">
+                <div class="info-item">
+                  <span class="info-icon" aria-hidden="true">📧</span>
+                  <div class="info-content">
+                    <strong>Email</strong>
+                    <a href="mailto:maxence.gregoire@email.com">maxence.gregoire@email.com</a>
+                  </div>
+                </div>
+
+                <div class="info-item">
+                  <span class="info-icon" aria-hidden="true">💼</span>
+                  <div class="info-content">
+                    <strong>LinkedIn</strong>
+                    <a href="https://www.linkedin.com/in/maxence-gregoire-8345722ba/" target="_blank" rel="noopener noreferrer">Maxence Grégoire</a>
+                  </div>
+                </div>
+
+                <div class="info-item">
+                  <span class="info-icon" aria-hidden="true">📱</span>
+                  <div class="info-content">
+                    <strong>Téléphone</strong>
+                    <a href="tel:+33768933100">+33 7 68 93 31 00</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- /.form-panel -->
+        </div> <!-- /.contact-columns -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <small>© <span id="year"></span> Maxence Grégoire. Tous droits réservés.</small>
+  </footer>
+
+  <script>
+    // Année dynamique
+    (function () {
+      var y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+
+      var form = document.getElementById('contactForm');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          var name = document.getElementById('name').value.trim();
+          var email = document.getElementById('email').value.trim();
+          var subject = document.getElementById('subject').value.trim() || 'Nouveau message du site';
+          var message = document.getElementById('message').value.trim();
+
+          var to = 'maxence.gregoire@email.com';
+          var body = 'Nom: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message;
+          var mailto = 'mailto:' + to + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+          // Ouvre le client mail de l'utilisateur avec le message pré-rempli
+          window.location.href = mailto;
+        });
+      }
+    })();
+  </script>
+  <!-- Floating LinkedIn button -->
+  <a class="floating-linkedin" href="https://www.linkedin.com/in/maxence-gregoire-8345722ba/" target="_blank" rel="noopener noreferrer" aria-label="Mon LinkedIn">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3.5 8.98h3v11.52h-3V8.98Zm5.5 0h2.88v1.57h.04c.4-.76 1.37-1.57 2.83-1.57 3.03 0 3.59 2 3.59 4.59v6.93h-3v-6.14c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.58-2.34 3.22v6.25h-3V8.98Z"/>
+    </svg>
+  </a>
+</body>
+</html>

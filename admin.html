@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Projets — Maxence Grégoire</title>
+  <meta name="description" content="Administration des projets" />
+
+  <!-- Polices : Inter + Playfair Display + Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&family=Roboto:wght@500;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css?v=2" />
+  <link rel="stylesheet" href="css/typography.css?v=2" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="css/admin-tabs.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/geii-decorations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+  <!-- Gestionnaire de thème -->
+  <script src="js/theme-manager.js?v=2"></script>
+  <!-- Migration des chemins d'images -->
+  <script src="js/migrate-paths.js"></script>
+  <!-- Bascule mode sombre/clair -->
+  <script src="js/dark-mode-toggle.js"></script>
+</head>
+<body class="admin-page">
+  <!-- Formes décoratives GEII -->
+  <div class="decorative-shapes">
+    <div class="circuit-trace circuit-1"></div>
+    <div class="circuit-trace circuit-2"></div>
+    <div class="wave wave-1"></div>
+    <div class="wave wave-2"></div>
+    <div class="wave wave-3"></div>
+    <div class="component resistor"></div>
+    <div class="component capacitor"></div>
+    <div class="component diode"></div>
+    <div class="component transistor"></div>
+    <div class="hex-grid hex-1"></div>
+    <div class="hex-grid hex-2"></div>
+    <div class="atom atom-1"><div class="atom-core"></div><div class="atom-orbit"></div></div>
+    <div class="atom atom-2"><div class="atom-core"></div><div class="atom-orbit"></div></div>
+    <div class="signal-wave signal-1"></div>
+    <div class="signal-wave signal-2"></div>
+    <div class="gradient-mesh mesh-1"></div>
+  </div>
+  <!-- Lien d'évitement -->
+  <a class="skip-link sr-only sr-only-focusable" href="#main">Aller au contenu principal</a>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-grid">
+      <div class="header-left">
+        <span class="logo">MG</span>
+      </div>
+      <h1 class="site-title">Gestion des Projets</h1>
+      <nav class="header-right" aria-label="Navigation principale">
+        <ul class="nav">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="projets.html">Projets</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" role="main">
+    <section class="section">
+      <!-- ONGLETS DE NAVIGATION -->
+      <div class="admin-tabs">
+        <button class="admin-tab-button active" data-tab="projects" type="button">Tous les Projets</button>
+        <button class="admin-tab-button" data-tab="recent" type="button">Projets Récents</button>
+        <button class="admin-tab-button" data-tab="profile" type="button">Profil</button>
+        <button class="admin-tab-button" data-tab="education" type="button">Éducation</button>
+        <button class="admin-tab-button" data-tab="skills" type="button">Compétences</button>
+        <button class="admin-tab-button" data-tab="colors" type="button">Couleurs</button>
+        <button class="admin-tab-button" data-tab="settings" type="button">Paramètres</button>
+      </div>
+
+      <!-- TAB 1: PROJETS -->
+      <div id="tab-projects" class="admin-tab-content active">
+        <div class="admin-container">
+          <!-- Formulaire d'ajout -->
+          <div class="admin-form-section">
+            <h2 class="section-title">Ajouter un nouveau projet</h2>
+            <form id="project-form" class="project-form">
+              <div class="form-group">
+                <label for="project-title">Titre du projet</label>
+                <input type="text" id="project-title" name="title" required placeholder="Ex: Mon Projet" />
+              </div>
+
+              <div class="form-group">
+                <label for="project-desc">Description</label>
+                <textarea id="project-desc" name="description" required placeholder="Décrivez votre projet..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label>Image</label>
+                <div class="drag-drop-zone" id="drag-drop-admin">
+                  <input type="file" id="project-image-file" name="image-file" accept="image/*" style="display: none;" />
+                  <svg class="drag-drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                  <p class="drag-drop-text">Glissez une image ici ou <span class="drag-drop-link">cliquez pour sélectionner</span></p>
+                  <p class="drag-drop-hint">PNG, JPG, GIF (max 5MB)</p>
+                </div>
+                <input type="hidden" id="project-image" name="image" required />
+                <small id="image-name" class="image-feedback" style="display: none;"></small>
+              </div>
+
+              <button type="submit" class="btn-primary">Ajouter le projet</button>
+            </form>
+          </div>
+
+          <!-- Liste des projets -->
+          <div class="admin-projects-section">
+            <h2 class="section-title">Projets existants (Galerie complète)</h2>
+            <div id="projects-list" class="projects-list">
+              <!-- Les projets s'affichent ici -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: PROJETS RÉCENTS -->
+      <div id="tab-recent" class="admin-tab-content">
+        <div class="admin-container">
+          <div class="recent-management">
+            <div class="recent-header">
+              <h2 class="section-title">Gestion des Projets Récents</h2>
+              <p class="recent-info-text">
+                Sélectionnez jusqu'à <strong>2 projets</strong> à afficher dans la section "Projets récents" 
+                de la page d'accueil et de la page projets. Cliquez sur l'étoile pour marquer/démarquer un projet.
+              </p>
+            </div>
+
+            <!-- Projets récents sélectionnés -->
+            <div class="recent-selected-section">
+              <h3 class="subsection-title">Projets récents sélectionnés (<span id="recent-count">0</span>/2)</h3>
+              <div id="recent-selected-list" class="recent-selected-grid">
+                <!-- Les projets récents s'affichent ici -->
+              </div>
+            </div>
+
+            <!-- Tous les projets disponibles -->
+            <div class="recent-available-section">
+              <h3 class="subsection-title">Tous les projets disponibles</h3>
+              <div id="recent-available-list" class="recent-available-grid">
+                <!-- Tous les projets s'affichent ici -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-profile" class="admin-tab-content">
+        <form id="profile-form" class="profile-form">
+          <div class="profile-section">
+            <h3 class="profile-section-title">Informations personnelles</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name">Prénom</label>
+                <input type="text" id="first-name" placeholder="Maxence" />
+              </div>
+              <div class="form-group">
+                <label for="last-name">Nom</label>
+                <input type="text" id="last-name" placeholder="Grégoire" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="title">Titre professionnel</label>
+              <input type="text" id="title" placeholder="Ex: Étudiant en GEII" />
+            </div>
+            <div class="form-group">
+              <label for="bio">Bio/Présentation</label>
+              <textarea id="bio" placeholder="Décrivez-vous..." style="min-height: 100px;"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="location">Localisation</label>
+              <input type="text" id="location" placeholder="Toulouse, France" />
+            </div>
+          </div>
+
+          <div class="profile-section">
+            <h3 class="profile-section-title">Contacts et réseaux</h3>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="votre@email.com" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Téléphone</label>
+              <input type="tel" id="phone" placeholder="+33 6 12 34 56 78" />
+            </div>
+            <div class="form-group">
+              <label for="linkedin">LinkedIn</label>
+              <input type="url" id="linkedin" placeholder="https://linkedin.com/in/..." />
+            </div>
+            <div class="form-group">
+              <label for="github">GitHub</label>
+              <input type="url" id="github" placeholder="https://github.com/..." />
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Enregistrer le profil</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- TAB 3: ÉDUCATION -->
+      <div id="tab-education" class="admin-tab-content">
+        <div style="background: var(--surface); border-radius: 16px; padding: 24px; box-shadow: var(--shadow);">
+          <h3 class="profile-section-title" style="margin-bottom: 24px;">Formation et éducation</h3>
+          <div id="education-list" class="education-list"></div>
+          <button id="add-education-btn" type="button" class="btn-add-item" style="margin-top: 16px;">+ Ajouter une formation</button>
+        </div>
+      </div>
+
+      <!-- TAB 4: COMPÉTENCES -->
+      <div id="tab-skills" class="admin-tab-content">
+        <div style="background: var(--surface); border-radius: 16px; padding: 24px; box-shadow: var(--shadow);">
+          <h3 class="profile-section-title" style="margin-bottom: 24px;">Compétences</h3>
+          <div id="skills-list" class="skills-list"></div>
+          <button id="add-skill-btn" type="button" class="btn-add-item" style="margin-top: 16px;">+ Ajouter une catégorie</button>
+        </div>
+      </div>
+
+      <!-- TAB 5: COULEURS -->
+      <div id="tab-colors" class="admin-tab-content">
+        <!-- Palettes prédéfinies -->
+        <div id="palette-selector" class="palette-selector"></div>
+
+        <!-- Palette personnalisée -->
+        <div style="background: var(--surface); border-radius: 16px; padding: 24px; box-shadow: var(--shadow); margin-bottom: 24px;">
+          <h3 class="profile-section-title" style="margin-bottom: 8px;">Palette personnalisée</h3>
+          <p style="color: var(--muted); margin-bottom: 24px; font-size: 0.95rem;">
+            <strong>Comment ça marche :</strong> Cliquez sur une couleur pour l'ouvrir, les changements s'appliquent immédiatement à votre site. Cliquez sur le carré de couleur ou le code hex pour modifier.
+          </p>
+          <div id="color-palette" class="color-palette"></div>
+          <div class="theme-actions">
+            <button type="button" class="btn-save-theme" onclick="adminTabs.showMessage('💾 Couleurs sauvegardées dans votre navigateur !', 'success')">💾 Couleurs sauvegardées</button>
+            <button type="button" class="btn-reset-theme" onclick="adminTabs.resetTheme()">↻ Réinitialiser aux défauts</button>
+          </div>
+        </div>
+
+        <!-- Aperçu des couleurs -->
+        <div class="color-preview">
+          <h4>Aperçu des couleurs</h4>
+          <div class="preview-grid">
+            <div class="preview-item preview-bg">Fond</div>
+            <div class="preview-item preview-surface">Surface</div>
+            <div class="preview-item preview-primary">Primaire</div>
+            <div class="preview-item preview-secondary">Secondaire</div>
+            <div class="preview-item preview-success">Succès</div>
+            <div class="preview-item preview-danger">Danger</div>
+            <div class="preview-item preview-warning">Avertissement</div>
+            <div class="preview-item preview-info">Info</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 6: PARAMÈTRES -->
+      <div id="tab-settings" class="admin-tab-content">
+        <div class="settings-grid">
+          <!-- Section Informations du site -->
+          <div>
+            <form id="site-info-form" class="settings-section">
+              <h3>Informations du site</h3>
+              <div class="form-group">
+                <label for="site-name">Nom du site</label>
+                <input type="text" id="site-name" placeholder="Maxence Grégoire" />
+              </div>
+              <div class="form-group">
+                <label for="site-description">Description</label>
+                <textarea id="site-description" placeholder="Description du site pour le SEO" style="min-height: 80px;"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="site-logo">Logo/Initiales</label>
+                <input type="text" id="site-logo" placeholder="MG" maxlength="3" />
+              </div>
+              <button type="submit" class="btn-primary" style="margin-top: 16px; width: 100%;">Enregistrer</button>
+            </form>
+          </div>
+
+          <!-- Section Informations de contact -->
+          <div>
+            <form id="contact-info-form" class="settings-section">
+              <h3>Informations de contact</h3>
+              <div class="form-group">
+                <label for="iut-name">Nom de l'IUT/École</label>
+                <input type="text" id="iut-name" placeholder="IUT Génie Électrique" />
+              </div>
+              <div class="form-group">
+                <label for="iut-url">URL de l'IUT</label>
+                <input type="url" id="iut-url" placeholder="https://iut..." />
+              </div>
+              <div class="form-group">
+                <label for="iut-address">Adresse</label>
+                <input type="text" id="iut-address" placeholder="Toulouse, France" />
+              </div>
+              <button type="submit" class="btn-primary" style="margin-top: 16px; width: 100%;">Enregistrer</button>
+            </form>
+          </div>
+
+          <!-- Section Sécurité -->
+          <div>
+            <div class="settings-section">
+              <h3>🔒 Sécurité</h3>
+              <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 16px;">Gérez votre mot de passe d'accès à l'administration.</p>
+              
+              <form id="password-change-form" class="password-form">
+                <div class="form-group">
+                  <label for="current-password">Mot de passe actuel <span class="required">*</span></label>
+                  <input type="password" id="current-password" name="current-password" required placeholder="Entrez votre mot de passe actuel" />
+                </div>
+
+                <div class="form-group">
+                  <label for="new-password">Nouveau mot de passe <span class="required">*</span></label>
+                  <input type="password" id="new-password" name="new-password" required placeholder="Entrez le nouveau mot de passe (min. 4 caractères)" minlength="4" />
+                </div>
+
+                <div class="form-group">
+                  <label for="confirm-password">Confirmer le nouveau mot de passe <span class="required">*</span></label>
+                  <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirmer le nouveau mot de passe" minlength="4" />
+                </div>
+
+                <div id="password-error" style="color: #e63946; font-size: 0.9rem; margin-bottom: 16px; display: none;"></div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; background: #ff6b6b;">Changer le mot de passe</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <small>© <span id="year"></span> Maxence Grégoire. Tous droits réservés.</small>
+  </footer>
+
+  <!-- Floating LinkedIn button -->
+  <a class="floating-linkedin" href="https://www.linkedin.com/in/maxence-gregoire-8345722ba/" target="_blank" rel="noopener noreferrer" aria-label="Mon LinkedIn">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3.5 8.98h3v11.52h-3V8.98Zm5.5 0h2.88v1.57h.04c.4-.76 1.37-1.57 2.83-1.57 3.03 0 3.59 2 3.59 4.59v6.93h-3v-6.14c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.58-2.34 3.22v6.25h-3V8.98Z"/>
+    </svg>
+  </a>
+
+  <!-- Bouton de déconnexion -->
+  <button id="logout-btn" class="btn-logout" title="Déconnexion">Déconnexion</button>
+
+  <script src="js/admin-login.js"></script>
+  <script src="js/theme-manager.js?v=2"></script>
+  <script src="js/site-manager.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/admin-tabs.js"></script>
+  <script src="js/drag-drop.js"></script>
+  <script src="js/load-projects-page.js"></script>
+</body>
+</html>

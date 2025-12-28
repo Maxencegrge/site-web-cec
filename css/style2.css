@@ -1,0 +1,140 @@
+/* Secondary stylesheet: simple overrides */
+:root{
+  /* Alternate accent color */
+  --primary: #ff6b6b;
+  
+  /* Typographie (inherit from style.css) */
+  --font-primary: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-accent: "Roboto", sans-serif;
+}
+
+/* Slightly bolder section titles */
+.section-title{ letter-spacing: 0.2px; }
+
+/* Buttons: add subtle outline */
+.btn-download, .btn-submit{
+  outline: 2px solid rgba(0,0,0,0.03);
+}
+
+/* Partner logo: add soft background */
+.partner-logo img{ background: transparent; }
+/* ===== PAGE PROJETS ===== */
+.projects-page .section { max-width: 1180px; margin-inline: auto; }
+
+/* HERO Dernier projet (grand cadre + descriptif à droite) */
+.hero-project-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* grand visuel / descriptif */
+  gap: 20px;
+  align-items: stretch;
+}
+.hero-project-media {
+  background: var(--surface);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.hero-project-media img {
+  width: 100%; height: 100%;
+  aspect-ratio: 16/6; /* large bandeau comme la maquette */
+  object-fit: cover;
+}
+.hero-project-aside {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+.hero-project-desc { color: var(--muted); }
+
+/* Bloc Liste + Panneau photos */
+.lag-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr; /* liste / photo */
+  gap: 20px;
+  align-items: start;
+}
+.project-list {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+.project-list-title { font-weight: 600; margin-bottom: 8px; }
+.project-list-ul { margin: 0; padding-left: 18px; line-height: 1.9; }
+.project-list-ul a { color: var(--text); text-decoration: none; }
+.project-list-ul a:hover { text-decoration: underline; }
+
+.project-photos {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: var(--shadow);
+}
+.photos-viewport {
+  overflow: hidden;
+  border-radius: 12px;
+  background: #f0f0f0;
+}
+.photos-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  transition: transform .35s ease;
+}
+.photos-track img {
+  width: 100%; height: 360px; object-fit: cover;
+  display: block;
+}
+.photos-controls {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; padding-top: 10px;
+}
+.photos-btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 6px 10px; cursor: pointer;
+}
+.photos-dots { display: flex; gap: 8px; }
+.photos-dots .dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #cfcfe0; border: none; cursor: pointer;
+}
+.photos-dots .dot.is-active { background: var(--primary); }
+
+/* Grille 2×2 des vignettes */
+.grid-2x2 .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.grid-2x2 .card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+.grid-2x2 .card-thumb img { width: 100%; height: 180px; object-fit: cover; }
+.grid-2x2 .card-thumb.placeholder { background: #e7e7ee; height: 180px; }
+.grid-2x2 .card-body { padding: 12px 14px; }
+.grid-2x2 .card-title { font-weight: 600; margin-bottom: 6px; }
+.grid-2x2 .card-desc { color: var(--muted); }
+
+/* Footer spécifique maquette */
+.footer-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; max-width: 1180px; margin: 0 auto 6px; padding: 0 16px;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .hero-project-grid { grid-template-columns: 1fr; }
+  .lag-grid { grid-template-columns: 1fr; }
+  .grid-2x2 .projects-grid { grid-template-columns: 1fr; }
+  .photos-track img { height: 240px; }
+}

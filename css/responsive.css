@@ -1,0 +1,367 @@
+/* ===== RESPONSIVE & MOBILE OPTIMIZATIONS ===== */
+
+/* Optimisations tactiles */
+@media (hover: none) and (pointer: coarse) {
+  /* Les éléments cliquables doivent être plus grands sur mobile */
+  button, a, .btn-primary, .btn-secondary, .admin-tab-button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Augmenter les zones de clic */
+  .nav a, .btn-submit, .btn-download {
+    padding: 12px 16px;
+  }
+
+  /* Pas de hover subtle sur mobile */
+  button:hover, a:hover {
+    background: unchanged;
+  }
+
+  /* Active state au lieu de hover */
+  button:active, a:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Très petits écrans (< 320px) */
+@media (max-width: 320px) {
+  body {
+    font-size: 12px;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+  }
+
+  .hero-grid h2 {
+    font-size: 1.25rem;
+  }
+
+  .nav {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .nav a {
+    font-size: 0.75rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+
+  .contact-container {
+    padding: 12px 8px;
+  }
+
+  .info-item {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .info-icon {
+    font-size: 1rem;
+  }
+}
+
+/* Petit mobile (320px - 480px) */
+@media (max-width: 480px) {
+  body {
+    padding: 8px;
+  }
+
+  .section {
+    padding: 16px 8px;
+  }
+
+  .site-header {
+    margin-bottom: 4px;
+    padding: 0 4px;
+  }
+
+  .header-grid {
+    gap: 4px;
+  }
+
+  .site-title {
+    font-size: 1.15rem;
+  }
+
+  .hero {
+    padding: 16px 8px;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .theme-toggle-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+}
+
+/* Tablet portrait (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  body {
+    padding: 16px;
+    font-size: 15px;
+  }
+
+  .section {
+    padding: 28px 16px;
+  }
+
+  .header-grid {
+    gap: 12px;
+    padding: 12px 0;
+  }
+
+  .site-title {
+    font-size: 1.6rem;
+  }
+
+  .nav {
+    gap: 14px;
+    font-size: 0.9rem;
+  }
+
+  .hero-grid {
+    gap: 16px;
+  }
+
+  .hero-grid h2 {
+    font-size: 1.8rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .contact-container {
+    padding: 24px 16px;
+  }
+
+  .contact-columns {
+    gap: 20px;
+  }
+
+  .cv-preview embed {
+    height: 300px;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .theme-toggle-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.25rem;
+  }
+
+  /* Admin */
+  .admin-tabs {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .admin-tab-button {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+
+  .color-palette {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .settings-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* Tablet landscape et grand mobile (769px - 960px) */
+@media (min-width: 769px) and (max-width: 960px) {
+  body {
+    padding: 18px;
+    font-size: 15px;
+  }
+
+  .section {
+    padding: 30px 18px;
+  }
+
+  .header-grid {
+    gap: 14px;
+  }
+
+  .site-title {
+    font-size: 1.7rem;
+  }
+
+  .nav {
+    gap: 16px;
+  }
+
+  .hero-grid {
+    gap: 18px;
+  }
+
+  .hero-grid h2 {
+    font-size: 1.9rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .contact-columns {
+    gap: 24px;
+  }
+
+  .cv-preview embed {
+    height: 340px;
+  }
+
+  /* Admin */
+  .color-palette {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  }
+
+  .settings-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+/* Desktop large (> 1200px) */
+@media (min-width: 1200px) {
+  body {
+    padding: 28px;
+  }
+
+  .section {
+    padding: 40px 28px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .contact-columns {
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+  }
+
+  .cv-preview embed {
+    height: 520px;
+  }
+
+  /* Admin */
+  .color-palette {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 18px;
+  }
+
+  .settings-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+/* Orientation */
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .hero-grid h2 {
+    font-size: 1.5rem;
+  }
+
+  .section {
+    padding: 16px 12px;
+  }
+}
+
+/* Print */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .theme-toggle-btn, .floating-linkedin, .btn-logout,
+  .admin-tabs, .nav {
+    display: none !important;
+  }
+
+  .site-header, .site-footer {
+    margin-bottom: 12px;
+    padding: 0;
+  }
+
+  a {
+    color: #0066cc;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+/* Préférence système pour le contraste réduit */
+@media (prefers-contrast: more) {
+  :root {
+    --border: #999;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  [data-theme="dark"] {
+    --border: #666;
+  }
+
+  button, a {
+    border: 1px solid currentColor;
+  }
+}
+
+/* Préférence système pour mouvement réduit */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Sauvegarde de données */
+@media (prefers-color-scheme: dark) {
+  /* Déjà géré par [data-theme="dark"] */
+}
+
+/* Mode économie batterie/données */
+@media (prefers-reduced-data: reduce) {
+  * {
+    animation: none !important;
+  }
+
+  img {
+    /* Laisser les images se charger normalement mais pas d'animation */
+  }
+}

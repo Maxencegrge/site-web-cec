@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projets — Maxence Grégoire</title>
+  <meta name="description" content="Projets de Maxence Grégoire : SmartCar, ECG et travaux électroniques GEII." />
+
+  <!-- Polices : Inter + Playfair Display + Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&family=Roboto:wght@500;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="typography.css" />
+  <link rel="stylesheet" href="style2.css" />
+  <link rel="stylesheet" href="animations.css" />
+  <link rel="stylesheet" href="geii-decorations.css" />
+
+  <!-- Gestionnaire de thème -->
+  <script src="theme-manager.js"></script>
+</head>
+<body class="projects-page">
+  <!-- Formes décoratives GEII -->
+  <div class="decorative-shapes">
+    <div class="circuit-trace circuit-1"></div>
+    <div class="circuit-trace circuit-2"></div>
+    <div class="wave wave-1"></div>
+    <div class="wave wave-2"></div>
+    <div class="wave wave-3"></div>
+    <div class="component resistor"></div>
+    <div class="component capacitor"></div>
+    <div class="component diode"></div>
+    <div class="component transistor"></div>
+    <div class="hex-grid hex-1"></div>
+    <div class="hex-grid hex-2"></div>
+    <div class="atom atom-1"><div class="atom-core"></div><div class="atom-orbit"></div></div>
+    <div class="atom atom-2"><div class="atom-core"></div><div class="atom-orbit"></div></div>
+    <div class="signal-wave signal-1"></div>
+    <div class="signal-wave signal-2"></div>
+    <div class="gradient-mesh mesh-1"></div>
+  </div>
+  <!-- Lien d'évitement -->
+  <a class="skip-link sr-only sr-only-focusable" href="#main">Aller au contenu principal</a>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-grid">
+      <div class="header-left">
+        <span class="logo">MG</span>
+      </div>
+      <h1 class="site-title">Projets</h1>
+      <nav class="header-right" aria-label="Navigation principale">
+        <ul class="nav">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="projets.html">Projets</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="admin-login.html" title="Page d'administration">Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" role="main">
+    <!-- HERO projet vedette -->
+    <section class="section hero" aria-labelledby="hero-title">
+      <div class="hero-grid">
+        <figure class="hero-photo">
+          <img src="image /projet-rm.jpeg" alt="SmartCar télécommandée avec électronique embarquée" />
+        </figure>
+        <div class="hero-text hero-intro">
+          <h2 id="hero-title" class="sr-only">Projet vedette</h2>
+          <h3 class="section-title">SmartCar — voiture connectée</h3>
+          <p class="intro-text">
+            Conception d'une voiture autonome : carte électronique personnalisée, microprocesseur embarqué,
+            commande à distance et tests de communication radio. Travail réalisé en équipe de 3, du schéma
+            à la validation sur banc.
+          </p>
+          <a class="btn-download" href="#portfolio">
+            <span class="btn-icon" aria-hidden="true">↓</span>
+            <span class="btn-text">Voir tous les projets</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LISTE DES PROJETS -->
+    <section id="portfolio" class="section projects">
+      <h2 class="section-title">Projets récents</h2>
+      <div class="projects-grid">
+        <article class="card" id="ecg">
+          <div class="card-thumb" aria-hidden="true">
+            <img src="image /ECG.jpeg" alt="Prototype d'ECG réalisé en groupe" />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Projet ECG</h3>
+            <p class="card-desc">Création d'un ECG en groupe : acquisition du signal, filtrage analogique et affichage.</p>
+          </div>
+        </article>
+
+        <article class="card" id="smartcar">
+          <div class="card-thumb" aria-hidden="true">
+            <img src="image /projet-rm.jpeg" alt="SmartCar avec carte électronique sur mesure" />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">SmartCar</h3>
+            <p class="card-desc">Carte électronique dédiée, microcontrôleur embarqué et pilotage à distance.</p>
+          </div>
+        </article>
+
+        <article class="card" id="geii-lab">
+          <div class="card-thumb" aria-hidden="true">
+            <img src="image /geii.jpeg" alt="Poste de travail électronique GEII" />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">GEII Lab</h3>
+            <p class="card-desc">Mesures, instrumentation et tests sur banc pour les modules GEII.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- GALERIE SIMPLE -->
+    <section class="section contact" aria-labelledby="galerie-title">
+      <h2 id="galerie-title" class="section-title">Galerie</h2>
+      <div class="projects-grid">
+        <article class="card">
+          <div class="card-thumb" aria-hidden="true">
+            <img src="image /projet-rm.jpeg" alt="SmartCar en test" />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">SmartCar</h3>
+            <p class="card-desc">Tests de communication et validation des capteurs.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-thumb" aria-hidden="true">
+            <img src="image /ECG.jpeg" alt="Circuit d'ECG" />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">ECG</h3>
+            <p class="card-desc">Chaîne d'acquisition et filtrage du signal cardiaque.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <small>© <span id="year"></span> Maxence Grégoire. Tous droits réservés.</small>
+  </footer>
+
+  <script>
+    (function () {
+      var y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
+  </script>
+  <!-- Floating LinkedIn button -->
+  <a class="floating-linkedin" href="https://www.linkedin.com/in/maxence-gregoire-8345722ba/" target="_blank" rel="noopener noreferrer" aria-label="Mon LinkedIn">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3.5 8.98h3v11.52h-3V8.98Zm5.5 0h2.88v1.57h.04c.4-.76 1.37-1.57 2.83-1.57 3.03 0 3.59 2 3.59 4.59v6.93h-3v-6.14c0-1.46-.03-3.33-2.03-3.33-2.03 0-2.34 1.58-2.34 3.22v6.25h-3V8.98Z"/>
+    </svg>
+  </a>
+</body>
+</html>
