@@ -227,6 +227,18 @@
       }
     };
 
+    // Pré-remplir le localStorage au premier chargement pour éviter une page vide
+    (function seedProjectsStorage() {
+      const stored = localStorage.getItem('projects');
+      if (!stored) {
+        try {
+          localStorage.setItem('projects', JSON.stringify(ProjectData.defaultProjects));
+        } catch (e) {
+          console.warn('Impossible d\'initialiser les projets par défaut dans le stockage local.', e);
+        }
+      }
+    })();
+
     // ===== RENDU DES PROJETS =====
     function renderDynamicProjects() {
       const projects = ProjectData.getProjects();
