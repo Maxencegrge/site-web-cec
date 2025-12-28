@@ -1,28 +1,57 @@
 /* ===== CHARGEMENT DYNAMIQUE DE LA PAGE PROJETS ===== */
 
-// Retourne les projets en tenant compte d'un fallback par défaut
-function getProjectsWithFallback() {
-  let projects = [];
-  const allProjects = localStorage.getItem('projects');
-
-  if (allProjects) {
+// Fonction utilitaire: récupérer tous les projets avec repli sur défauts
+function getAllProjectsWithFallback() {
+  const stored = localStorage.getItem('projects');
+  let parsed = [];
+  if (stored) {
     try {
-      projects = JSON.parse(allProjects);
+      parsed = JSON.parse(stored);
     } catch (e) {
-      console.error('Erreur lors du chargement des projets:', e);
+      parsed = [];
     }
   }
 
-  if (!projects.length && typeof ProjectData !== 'undefined' && Array.isArray(ProjectData.defaultProjects)) {
-    projects = [...ProjectData.defaultProjects];
-    try {
-      localStorage.setItem('projects', JSON.stringify(projects));
-    } catch (e) {
-      console.warn('Impossible de sauvegarder les projets par défaut dans le stockage local.', e);
+  // Si aucune donnée ou tableau vide, utiliser les projets par défaut
+  if (!Array.isArray(parsed) || parsed.length === 0) {
+    if (typeof ProjectData !== 'undefined' && Array.isArray(ProjectData.defaultProjects)) {
+      return ProjectData.defaultProjects;
     }
+    // Repli minimal si ProjectData n'est pas disponible
+    return [
+      {
+        id: 1,
+        title: 'Projet EN',
+        description: "J'ai conçu et simulé un filtre de lissage conforme au cahier des charges, en respectant la bande passante imposée et la structure de Rauch. J'ai ensuite participé au routage du circuit imprimé et à son implantation, puis j'ai testé le filtre avec la carte Nucleo pour vérifier son rôle dans la chaîne d'acquisition audio et valider son fonctionnement avant intégration dans le système complet.",
+        image: 'images/projects/EN.jpeg'
+      },
+      {
+        id: 2,
+        title: 'Projet banc de test',
+        description: "J'ai caractérisé une ligne microstrip, réalisé des mesures HF sur un capteur de liquide et étudié l'impact d'une fiole sur l'admittance. J'ai aussi analysé la documentation de l'ARV et rédigé une fiche d'aide expliquant comment reproduire les tests manuels, étape préparatoire à l'automatisation sous Python.",
+        image: 'images/projects/projet banc de test .jpeg'
+      },
+      {
+        id: 3,
+        title: 'SmartCar',
+        description: "Carte électronique dédiée, microcontrôleur embarqué et pilotage à distance.",
+        image: 'images/projects/projet-rm.jpeg'
+      },
+      {
+        id: 4,
+        title: 'Projet ECG',
+        description: "Création d'un ECG en groupe : acquisition du signal, filtrage analogique et affichage.",
+        image: 'images/projects/ECG.jpeg'
+      },
+      {
+        id: 5,
+        title: 'Projet IE — Dino Game',
+        description: "Dans le cadre de notre SAE IE à l'IUT GEII Toulouse, en collaboration avec Nathan Boumadi, nous avons développé un petit jeu inspiré du célèbre Dino Game de Google Chrome. Un projet mêlant programmation et créativité.",
+        image: 'images/projects/IE.jpeg'
+      }
+    ];
   }
-
-  return projects;
+  return parsed;
 }
 
 // Fonction pour charger le projet vedette (hero)
@@ -33,9 +62,12 @@ function loadFeaturedProject() {
   
   if (!heroImage || !heroTitle || !heroDesc) return;
   
+  // Récupérer tous les projets
+  const allProjectsArr = getAllProjectsWithFallback();
   const featuredId = localStorage.getItem('featured_project');
-  let projects = getProjectsWithFallback();
+  
   let projectId = 3; // ID par défaut (SmartCar)
+  const projects = allProjectsArr;
   
   if (featuredId) {
     try {
@@ -46,7 +78,7 @@ function loadFeaturedProject() {
   }
   
   // Trouver le projet vedette
-  const featuredProject = projects.find(p => p.id === projectId) || projects[0];
+  const featuredProject = projects.find(p => p.id === projectId);
   
   if (featuredProject) {
     heroImage.src = featuredProject.image;
@@ -63,8 +95,8 @@ function loadRecentProjectsPage() {
   if (!recentGrid) return;
   
   // Récupérer tous les projets
+  const projects = getAllProjectsWithFallback();
   const recentIds = localStorage.getItem('recent_projects');
-  let projects = getProjectsWithFallback();
   let recentProjectIds = [1, 2]; // Par défaut
   
   if (recentIds) {
@@ -102,21 +134,6 @@ function loadRecentProjectsPage() {
   } else {
     recentGrid.innerHTML = '<p class="empty-message">Aucun projet récent sélectionné. Allez dans l\'admin pour en choisir.</p>';
   }
-
-  // Si aucun projet n'a été affiché (données manquantes), tenter un rendu brut de tous les projets
-  if (!recentGrid.innerHTML.trim()) {
-    recentGrid.innerHTML = projects.map(project => `
-      <article class="card">
-        <div class="card-thumb" aria-hidden="true">
-          <img src="${project.image}" alt="${project.title}" onerror="this.src='images/projects/placeholder.jpeg'" />
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">${project.title}</h3>
-          <p class="card-desc">${project.description}</p>
-        </div>
-      </article>
-    `).join('');
-  }
 }
 
 // Fonction pour charger tous les projets dans la galerie
@@ -126,8 +143,8 @@ function loadGalleryProjects() {
   if (!galleryGrid) return;
   
   // Récupérer tous les projets
+  const projects = getAllProjectsWithFallback();
   const recentIds = localStorage.getItem('recent_projects');
-  let projects = getProjectsWithFallback();
   let recentProjectIds = [1, 2]; // Par défaut
   
   if (recentIds) {
@@ -156,21 +173,6 @@ function loadGalleryProjects() {
     `).join('');
   } else {
     galleryGrid.innerHTML = '<p class="empty-message">Tous les projets sont affichés dans la section récents.</p>';
-  }
-
-  // Si toujours vide (pas de récents définis), montrer tous les projets
-  if (!galleryGrid.innerHTML.trim()) {
-    galleryGrid.innerHTML = projects.map(project => `
-      <article class="card">
-        <div class="card-thumb" aria-hidden="true">
-          <img src="${project.image}" alt="${project.title}" onerror="this.src='images/projects/placeholder.jpeg'" />
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">${project.title}</h3>
-          <p class="card-desc">${project.description}</p>
-        </div>
-      </article>
-    `).join('');
   }
 }
 
