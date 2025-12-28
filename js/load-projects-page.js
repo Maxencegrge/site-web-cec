@@ -102,6 +102,21 @@ function loadRecentProjectsPage() {
   } else {
     recentGrid.innerHTML = '<p class="empty-message">Aucun projet récent sélectionné. Allez dans l\'admin pour en choisir.</p>';
   }
+
+  // Si aucun projet n'a été affiché (données manquantes), tenter un rendu brut de tous les projets
+  if (!recentGrid.innerHTML.trim()) {
+    recentGrid.innerHTML = projects.map(project => `
+      <article class="card">
+        <div class="card-thumb" aria-hidden="true">
+          <img src="${project.image}" alt="${project.title}" onerror="this.src='images/projects/placeholder.jpeg'" />
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">${project.title}</h3>
+          <p class="card-desc">${project.description}</p>
+        </div>
+      </article>
+    `).join('');
+  }
 }
 
 // Fonction pour charger tous les projets dans la galerie
@@ -141,6 +156,21 @@ function loadGalleryProjects() {
     `).join('');
   } else {
     galleryGrid.innerHTML = '<p class="empty-message">Tous les projets sont affichés dans la section récents.</p>';
+  }
+
+  // Si toujours vide (pas de récents définis), montrer tous les projets
+  if (!galleryGrid.innerHTML.trim()) {
+    galleryGrid.innerHTML = projects.map(project => `
+      <article class="card">
+        <div class="card-thumb" aria-hidden="true">
+          <img src="${project.image}" alt="${project.title}" onerror="this.src='images/projects/placeholder.jpeg'" />
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">${project.title}</h3>
+          <p class="card-desc">${project.description}</p>
+        </div>
+      </article>
+    `).join('');
   }
 }
 
