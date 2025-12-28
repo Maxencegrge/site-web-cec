@@ -1,5 +1,59 @@
 /* ===== CHARGEMENT DYNAMIQUE DE LA PAGE PROJETS ===== */
 
+// Fonction utilitaire: récupérer tous les projets avec repli sur défauts
+function getAllProjectsWithFallback() {
+  const stored = localStorage.getItem('projects');
+  let parsed = [];
+  if (stored) {
+    try {
+      parsed = JSON.parse(stored);
+    } catch (e) {
+      parsed = [];
+    }
+  }
+
+  // Si aucune donnée ou tableau vide, utiliser les projets par défaut
+  if (!Array.isArray(parsed) || parsed.length === 0) {
+    if (typeof ProjectData !== 'undefined' && Array.isArray(ProjectData.defaultProjects)) {
+      return ProjectData.defaultProjects;
+    }
+    // Repli minimal si ProjectData n'est pas disponible
+    return [
+      {
+        id: 1,
+        title: 'Projet EN',
+        description: "J'ai conçu et simulé un filtre de lissage conforme au cahier des charges, en respectant la bande passante imposée et la structure de Rauch. J'ai ensuite participé au routage du circuit imprimé et à son implantation, puis j'ai testé le filtre avec la carte Nucleo pour vérifier son rôle dans la chaîne d'acquisition audio et valider son fonctionnement avant intégration dans le système complet.",
+        image: 'images/projects/EN.jpeg'
+      },
+      {
+        id: 2,
+        title: 'Projet banc de test',
+        description: "J'ai caractérisé une ligne microstrip, réalisé des mesures HF sur un capteur de liquide et étudié l'impact d'une fiole sur l'admittance. J'ai aussi analysé la documentation de l'ARV et rédigé une fiche d'aide expliquant comment reproduire les tests manuels, étape préparatoire à l'automatisation sous Python.",
+        image: 'images/projects/projet banc de test .jpeg'
+      },
+      {
+        id: 3,
+        title: 'SmartCar',
+        description: "Carte électronique dédiée, microcontrôleur embarqué et pilotage à distance.",
+        image: 'images/projects/projet-rm.jpeg'
+      },
+      {
+        id: 4,
+        title: 'Projet ECG',
+        description: "Création d'un ECG en groupe : acquisition du signal, filtrage analogique et affichage.",
+        image: 'images/projects/ECG.jpeg'
+      },
+      {
+        id: 5,
+        title: 'Projet IE — Dino Game',
+        description: "Dans le cadre de notre SAE IE à l'IUT GEII Toulouse, en collaboration avec Nathan Boumadi, nous avons développé un petit jeu inspiré du célèbre Dino Game de Google Chrome. Un projet mêlant programmation et créativité.",
+        image: 'images/projects/IE.jpeg'
+      }
+    ];
+  }
+  return parsed;
+}
+
 // Fonction pour charger le projet vedette (hero)
 function loadFeaturedProject() {
   const heroImage = document.getElementById('hero-image');
@@ -9,20 +63,11 @@ function loadFeaturedProject() {
   if (!heroImage || !heroTitle || !heroDesc) return;
   
   // Récupérer tous les projets
-  const allProjects = localStorage.getItem('projects');
+  const allProjectsArr = getAllProjectsWithFallback();
   const featuredId = localStorage.getItem('featured_project');
   
-  let projects = [];
   let projectId = 3; // ID par défaut (SmartCar)
-  
-  if (allProjects) {
-    try {
-      projects = JSON.parse(allProjects);
-    } catch (e) {
-      console.error('Erreur lors du chargement des projets:', e);
-      return;
-    }
-  }
+  const projects = allProjectsArr;
   
   if (featuredId) {
     try {
@@ -50,20 +95,9 @@ function loadRecentProjectsPage() {
   if (!recentGrid) return;
   
   // Récupérer tous les projets
-  const allProjects = localStorage.getItem('projects');
+  const projects = getAllProjectsWithFallback();
   const recentIds = localStorage.getItem('recent_projects');
-  
-  let projects = [];
   let recentProjectIds = [1, 2]; // Par défaut
-  
-  if (allProjects) {
-    try {
-      projects = JSON.parse(allProjects);
-    } catch (e) {
-      console.error('Erreur lors du chargement des projets:', e);
-      return;
-    }
-  }
   
   if (recentIds) {
     try {
@@ -109,20 +143,9 @@ function loadGalleryProjects() {
   if (!galleryGrid) return;
   
   // Récupérer tous les projets
-  const allProjects = localStorage.getItem('projects');
+  const projects = getAllProjectsWithFallback();
   const recentIds = localStorage.getItem('recent_projects');
-  
-  let projects = [];
   let recentProjectIds = [1, 2]; // Par défaut
-  
-  if (allProjects) {
-    try {
-      projects = JSON.parse(allProjects);
-    } catch (e) {
-      console.error('Erreur lors du chargement des projets:', e);
-      return;
-    }
-  }
   
   if (recentIds) {
     try {
