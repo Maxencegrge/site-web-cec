@@ -1,5 +1,30 @@
 /* ===== CHARGEMENT DYNAMIQUE DE LA PAGE PROJETS ===== */
 
+// Retourne les projets en tenant compte d'un fallback par défaut
+function getProjectsWithFallback() {
+  let projects = [];
+  const allProjects = localStorage.getItem('projects');
+
+  if (allProjects) {
+    try {
+      projects = JSON.parse(allProjects);
+    } catch (e) {
+      console.error('Erreur lors du chargement des projets:', e);
+    }
+  }
+
+  if (!projects.length && typeof ProjectData !== 'undefined' && Array.isArray(ProjectData.defaultProjects)) {
+    projects = [...ProjectData.defaultProjects];
+    try {
+      localStorage.setItem('projects', JSON.stringify(projects));
+    } catch (e) {
+      console.warn('Impossible de sauvegarder les projets par défaut dans le stockage local.', e);
+    }
+  }
+
+  return projects;
+}
+
 // Fonction pour charger le projet vedette (hero)
 function loadFeaturedProject() {
   const heroImage = document.getElementById('hero-image');
@@ -8,21 +33,9 @@ function loadFeaturedProject() {
   
   if (!heroImage || !heroTitle || !heroDesc) return;
   
-  // Récupérer tous les projets
-  const allProjects = localStorage.getItem('projects');
   const featuredId = localStorage.getItem('featured_project');
-  
-  let projects = [];
+  let projects = getProjectsWithFallback();
   let projectId = 3; // ID par défaut (SmartCar)
-  
-  if (allProjects) {
-    try {
-      projects = JSON.parse(allProjects);
-    } catch (e) {
-      console.error('Erreur lors du chargement des projets:', e);
-      return;
-    }
-  }
   
   if (featuredId) {
     try {
@@ -33,7 +46,7 @@ function loadFeaturedProject() {
   }
   
   // Trouver le projet vedette
-  const featuredProject = projects.find(p => p.id === projectId);
+  const featuredProject = projects.find(p => p.id === projectId) || projects[0];
   
   if (featuredProject) {
     heroImage.src = featuredProject.image;
@@ -50,20 +63,9 @@ function loadRecentProjectsPage() {
   if (!recentGrid) return;
   
   // Récupérer tous les projets
-  const allProjects = localStorage.getItem('projects');
   const recentIds = localStorage.getItem('recent_projects');
-  
-  let projects = [];
+  let projects = getProjectsWithFallback();
   let recentProjectIds = [1, 2]; // Par défaut
-  
-  if (allProjects) {
-    try {
-      projects = JSON.parse(allProjects);
-    } catch (e) {
-      console.error('Erreur lors du chargement des projets:', e);
-      return;
-    }
-  }
   
   if (recentIds) {
     try {
@@ -109,20 +111,9 @@ function loadGalleryProjects() {
   if (!galleryGrid) return;
   
   // Récupérer tous les projets
-  const allProjects = localStorage.getItem('projects');
   const recentIds = localStorage.getItem('recent_projects');
-  
-  let projects = [];
+  let projects = getProjectsWithFallback();
   let recentProjectIds = [1, 2]; // Par défaut
-  
-  if (allProjects) {
-    try {
-      projects = JSON.parse(allProjects);
-    } catch (e) {
-      console.error('Erreur lors du chargement des projets:', e);
-      return;
-    }
-  }
   
   if (recentIds) {
     try {

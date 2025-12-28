@@ -179,43 +179,46 @@
     // ===== DONNÉES DES PROJETS =====
     const ProjectData = {
       defaultProjects: [
-        {
-          id: 1,
-          title: 'Projet EN',
-          description: 'J\'ai conçu et simulé un filtre de lissage conforme au cahier des charges, en respectant la bande passante imposée et la structure de Rauch. J\'ai ensuite participé au routage du circuit imprimé et à son implantation, puis j\'ai testé le filtre avec la carte Nucleo pour vérifier son rôle dans la chaîne d\'acquisition audio et valider son fonctionnement avant intégration dans le système complet.',
-          image: 'image /EN.jpeg'
-        },
-        {
-          id: 2,
-          title: 'Projet banc de test',
-          description: 'J\'ai caractérisé une ligne microstrip, réalisé des mesures HF sur un capteur de liquide et étudié l\'impact d\'une fiole sur l\'admittance. J\'ai aussi analysé la documentation de l\'ARV et rédigé une fiche d\'aide expliquant comment reproduire les tests manuels, étape préparatoire à l\'automatisation sous Python.',
-          image: 'image /projet banc de test .jpeg'
-        },
-        {
-          id: 3,
-          title: 'SmartCar',
-          description: 'Carte électronique dédiée, microcontrôleur embarqué et pilotage à distance.',
-          image: 'image /projet-rm.jpeg'
-        },
-        {
-          id: 4,
-          title: 'Projet ECG',
-          description: 'Création d\'un ECG en groupe : acquisition du signal, filtrage analogique et affichage.',
-          image: 'image /ECG.jpeg'
-        },
-        {
-          id: 5,
-          title: 'Projet IE — Dino Game',
-          description: 'Dans le cadre de notre SAE IE à l\'IUT GEII Toulouse, en collaboration avec Nathan Boumadi, nous avons développé un petit jeu inspiré du célèbre Dino Game de Google Chrome. Un projet mêlant programmation et créativité.',
-          image: 'image /IE.jpeg'
-        }
+          {
+            id: 1,
+            title: 'Projet EN',
+            description: 'J\'ai conçu et simulé un filtre de lissage conforme au cahier des charges, en respectant la bande passante imposée et la structure de Rauch. J\'ai ensuite participé au routage du circuit imprimé et à son implantation, puis j\'ai testé le filtre avec la carte Nucleo pour vérifier son rôle dans la chaîne d\'acquisition audio et valider son fonctionnement avant intégration dans le système complet.',
+            image: 'images/projects/EN.jpeg'
+          },
+          {
+            id: 2,
+            title: 'Projet banc de test',
+            description: 'J\'ai caractérisé une ligne microstrip, réalisé des mesures HF sur un capteur de liquide et étudié l\'impact d\'une fiole sur l\'admittance. J\'ai aussi analysé la documentation de l\'ARV et rédigé une fiche d\'aide expliquant comment reproduire les tests manuels, étape préparatoire à l\'automatisation sous Python.',
+            image: 'images/projects/projet banc de test .jpeg'
+          },
+          {
+            id: 3,
+            title: 'SmartCar',
+            description: 'Carte électronique dédiée, microcontrôleur embarqué et pilotage à distance.',
+            image: 'images/projects/projet-rm.jpeg'
+          },
+          {
+            id: 4,
+            title: 'Projet ECG',
+            description: 'Création d\'un ECG en groupe : acquisition du signal, filtrage analogique et affichage.',
+            image: 'images/projects/ECG.jpeg'
+          },
+          {
+            id: 5,
+            title: 'Projet IE — Dino Game',
+            description: 'Dans le cadre de notre SAE IE à l\'IUT GEII Toulouse, en collaboration avec Nathan Boumadi, nous avons développé un petit jeu inspiré du célèbre Dino Game de Google Chrome. Un projet mêlant programmation et créativité.',
+            image: 'images/projects/IE.jpeg'
+          }
       ],
 
       getProjects() {
         const stored = localStorage.getItem('projects');
         if (stored) {
           try {
-            return JSON.parse(stored);
+            const parsed = JSON.parse(stored);
+            if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+            // Si vide ou non conforme, repasser sur les valeurs par défaut
+            return this.defaultProjects;
           } catch (e) {
             return this.defaultProjects;
           }
@@ -420,11 +423,6 @@
   <script src="js/load-projects-page.js"></script>
   
   <script src="js/drag-drop.js"></script>
-
-  <!-- FOOTER -->
-  <footer class="site-footer" role="contentinfo">
-    <small>© <span id="year"></span> Maxence Grégoire. Tous droits réservés.</small>
-  </footer>
 
   <!-- Floating LinkedIn button -->
   <a class="floating-linkedin" href="https://www.linkedin.com/in/maxence-gregoire-8345722ba/" target="_blank" rel="noopener noreferrer" aria-label="Mon LinkedIn">
