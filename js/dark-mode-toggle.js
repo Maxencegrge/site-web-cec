@@ -76,7 +76,7 @@ const DarkModeToggle = {
     document.body.classList.add('dark-mode');
     localStorage.setItem(this.DARK_MODE_KEY, 'true');
     this.updateButtonIcon(true);
-    
+
     // Appliquer la palette sombre si une palette sombre est sélectionnée
     if (window.ThemeManager) {
       const currentPalette = localStorage.getItem('current_palette') || 'default';
@@ -87,15 +87,18 @@ const DarkModeToggle = {
       ThemeManager.applyPalette(targetPalette);
       localStorage.setItem('current_palette', targetPalette);
     }
+
+    // Garantir un texte clair en mode sombre (après application de palette)
+    this.forceTextContrast(true);
   },
 
   // Désactiver le mode sombre
   disableDarkMode: function() {
-    document.documentElement.removeAttribute('data-theme');
+    document.documentElement.setAttribute('data-theme', 'light');
     document.body.classList.remove('dark-mode');
     localStorage.setItem(this.DARK_MODE_KEY, 'false');
     this.updateButtonIcon(false);
-    
+
     // Revenir à une palette claire si on est en sombre
     if (window.ThemeManager) {
       const currentPalette = localStorage.getItem('current_palette') || 'default';
@@ -106,6 +109,9 @@ const DarkModeToggle = {
         localStorage.setItem('current_palette', lastLightPalette);
       }
     }
+
+    // Garantir un texte foncé en mode clair (après application de palette)
+    this.forceTextContrast(false);
   },
 
   // Mettre à jour l'icône du bouton
@@ -117,6 +123,13 @@ const DarkModeToggle = {
         icon.textContent = isDarkMode ? '☀️' : '🌙';
       }
     }
+  },
+
+  // Forcer un contraste de texte lisible selon le mode
+  forceTextContrast: function(isDarkMode) {
+    const root = document.documentElement;
+    root.style.setProperty('--text', isDarkMode ? '#f5f5f5' : '#1a1a1a');
+    root.style.setProperty('--muted', isDarkMode ? '#cfd2d9' : '#666666');
   }
 };
 
