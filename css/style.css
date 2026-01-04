@@ -204,6 +204,19 @@ h6, .h6 { font-family: var(--font-primary); font-size: var(--text-sm); font-weig
   aspect-ratio: 16/9; /* proche de ta maquette */
   object-fit: cover;
 }
+
+/* Portrait variant for About page */
+.portrait-photo img{
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center;
+  height: auto;
+}
+
+.portrait-photo{
+  max-width: 360px;
+  justify-self: center;
+}
 .hero-intro{
   background: var(--surface);
   border: 1px solid var(--border);

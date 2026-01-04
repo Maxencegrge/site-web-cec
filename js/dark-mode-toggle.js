@@ -12,6 +12,15 @@ const DarkModeToggle = {
     lavender: 'darkPurple',
     tropical: 'cyberpunk'
   },
+    // Palette équivalente pour revenir en clair
+    PALETTE_LIGHT_MAP: {
+      darkMode: 'default',
+      darkBlue: 'ocean',
+      midnight: 'sunset',
+      darkGreen: 'forest',
+      slate: 'minimalist',
+      darkPurple: 'lavender',
+      cyberpunk: 'tropical'
 
   // Initialiser le mode sombre
   init: function() {
@@ -80,7 +89,11 @@ const DarkModeToggle = {
     // Appliquer la palette sombre si une palette sombre est sélectionnée
     if (window.ThemeManager) {
       const currentPalette = localStorage.getItem('current_palette') || 'default';
-      const lastDarkPalette = localStorage.getItem('last_dark_palette') || 'darkMode';
+        // Mémoriser la palette claire actuelle avant de passer au sombre
+        if (!ThemeManager.isDarkPalette(currentPalette)) {
+          localStorage.setItem('last_light_palette', currentPalette);
+        }
+        const lastDarkPalette = localStorage.getItem('last_dark_palette') || 'darkMode';
       const isAlreadyDark = ThemeManager.isDarkPalette(currentPalette);
       const mappedDark = this.PALETTE_DARK_MAP[currentPalette];
       const targetPalette = isAlreadyDark ? currentPalette : (mappedDark || lastDarkPalette || 'darkMode');
@@ -105,8 +118,12 @@ const DarkModeToggle = {
       const lastLightPalette = localStorage.getItem('last_light_palette') || 'default';
       const isDarkPalette = ThemeManager.isDarkPalette(currentPalette);
       if (isDarkPalette) {
-        ThemeManager.applyPalette(lastLightPalette);
-        localStorage.setItem('current_palette', lastLightPalette);
+          const mappedLight = this.PALETTE_LIGHT_MAP[currentPalette];
+          const targetPalette = mappedLight || lastLightPalette || 'default';
+          ThemeManager.applyPalette(targetPalette);
+          localStorage.setItem('current_palette', targetPalette);
+          // Mémoriser cette palette comme dernière palette claire
+          localStorage.setItem('last_light_palette', targetPalette);
       }
     }
 
