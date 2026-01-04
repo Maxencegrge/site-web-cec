@@ -15,7 +15,17 @@ function loadRecentProjects() {
   
   if (allProjects) {
     try {
-      projects = JSON.parse(allProjects);
+      let patched = false;
+      projects = JSON.parse(allProjects).map(p => {
+        if (p.image === 'images/projects/projet banc de test .jpeg') {
+          patched = true;
+          return { ...p, image: 'images/projects/projet-banc-de-test.jpeg' };
+        }
+        return p;
+      });
+      if (patched) {
+        localStorage.setItem('projects', JSON.stringify(projects));
+      }
     } catch (e) {
       console.error('Erreur lors du chargement des projets:', e);
       return;
@@ -32,6 +42,19 @@ function loadRecentProjects() {
   
   // Filtrer les projets récents
   const recentProjects = projects.filter(p => recentProjectIds.includes(p.id));
+
+  // Ajouter un lien par défaut vers les pages dédiées si absent
+  const withLinks = recentProjects.map(p => {
+    if (p.link) return p;
+    const fallbackLink = {
+      1: 'project-en.html',
+      2: 'project-banc-de-test.html',
+      3: 'project-smartcar.html',
+      4: 'project-ecg.html',
+      5: 'project-dino-game.html'
+    }[p.id];
+    return { ...p, link: fallbackLink || 'projets.html' };
+  });
   
   // Si pas assez de projets, utiliser les premiers
   if (recentProjects.length === 0 && projects.length > 0) {
@@ -39,17 +62,18 @@ function loadRecentProjects() {
   }
   
   // Limiter à 2 projets
-  const displayProjects = recentProjects.slice(0, 2);
+  const displayProjects = withLinks.slice(0, 2);
   
   // Générer le HTML
   if (displayProjects.length > 0) {
     projectsGrid.innerHTML = displayProjects.map(project => `
       <article class="card">
-        <div class="card-thumb" aria-hidden="true">
+        <a href="${project.link || 'projets.html'}" class="card-thumb" aria-label="${project.title}">
           <img src="${project.image}" alt="${project.title}" onerror="this.src='images/projects/placeholder.jpeg'" />
-        </div>
+          <span class="card-overlay">${project.title}</span>
+        </a>
         <div class="card-body">
-          <h3 class="card-title">${project.title}</h3>
+          <h3 class="card-title"><a href="${project.link || 'projets.html'}">${project.title}</a></h3>
           <p class="card-desc">${project.description}</p>
         </div>
       </article>

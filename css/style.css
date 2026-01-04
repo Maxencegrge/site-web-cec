@@ -10,7 +10,7 @@ img { max-width: 100%; display: block; }
   --text: #1e1e1e;
   --muted: #666;
   --border: #e5e5e5;
-  --primary: #6C63FF;
+  --primary: #4b2c82; /* violet sombre comme couleur d'accent principale */
   --shadow: 0 16px 32px rgba(0,0,0,0.08);
   
   /* === TYPOGRAPHIE === */
@@ -197,10 +197,11 @@ h6, .h6 { font-family: var(--font-primary); font-size: var(--text-sm); font-weig
   border-radius: 16px;
   overflow: hidden;
   box-shadow: var(--shadow);
+  justify-self: center;
 }
 .hero-photo img{
   width: 100%;
-  height: 100%;
+  height: auto;
   aspect-ratio: 16/9; /* proche de ta maquette */
   object-fit: cover;
 }
@@ -309,6 +310,41 @@ h6, .h6 { font-family: var(--font-primary); font-size: var(--text-sm); font-weig
   margin-bottom: 6px;
 }
 
+/* BDE badge */
+.bde-header{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.bde-logo{
+  width: 80px;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.bde-gallery{
+  margin-top: 12px;
+}
+.bde-photo{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.bde-photo img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.bde-photo figcaption{
+  padding: 10px 12px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
 /* ===== CONTENT TWO COLUMNS ===== */
 .content-two-columns{
   display: grid;
@@ -342,11 +378,48 @@ h6, .h6 { font-family: var(--font-primary); font-size: var(--text-sm); font-weig
   width: 100%;
   height: 200px;
   overflow: hidden;
+  position: relative;
+  display: block;
 }
 .card-thumb img{
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Ajuste la hauteur des vignettes sur la page Projets pour des images uniformes */
+.projects-page .projects-grid .card-thumb{
+  height: 240px;
+  aspect-ratio: 4 / 3;
+}
+
+@media (max-width: 960px){
+  .projects-page .projects-grid .card-thumb{ height: 200px; }
+}
+
+@media (max-width: 640px){
+  .projects-page .projects-grid .card-thumb{ height: 180px; }
+}
+.card-overlay{
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.35));
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .25s ease, transform .25s ease;
+  text-align: center;
+  padding: 12px;
+}
+.card:hover .card-overlay,
+.card-thumb:hover .card-overlay,
+.card-thumb:focus-visible .card-overlay{
+  opacity: 1;
+  transform: translateY(0);
 }
 .card-body{ padding: 12px 14px; }
 .card-title{
@@ -435,7 +508,14 @@ h6, .h6 { font-family: var(--font-primary); font-size: var(--text-sm); font-weig
 .contact{
   max-width:1180px; margin-inline: auto; padding: 16px;
 }
-.contact a{ color: var(--primary); }
+.contact a{
+  color: var(--primary);
+}
+/* Preserve contrast for the CTA button inside contact sections */
+.contact a.btn-download,
+.contact a.btn-download .btn-text{
+  color: #fff !important;
+}
 
 /* ===== PARTENAIRE ===== */
 .partner-info{
@@ -1327,7 +1407,7 @@ h6, .h6 { font-family: var(--font-primary); font-size: var(--text-sm); font-weig
     --text: #f0f0f3;
     --muted: #b5b5c0;
     --border: #272733;
-    --primary: #7a78ff;
+    --primary: #5c3aa3; /* variante violet sombre pour le mode sombre */
     --shadow: 0 12px 24px rgba(0,0,0,0.35);
   }
 }

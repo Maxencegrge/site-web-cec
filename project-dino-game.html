@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projet IE — Dino Game — Maxence Grégoire</title>
+  <meta name="description" content="SAE IE : mini jeu type Dino Game, programmation et créativité." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&family=Roboto:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=2" />
+  <link rel="stylesheet" href="css/typography.css?v=2" />
+  <link rel="stylesheet" href="css/style2.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/geii-decorations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <script src="js/theme-manager.js?v=2"></script>
+  <script src="js/migrate-paths.js"></script>
+  <script src="js/dark-mode-toggle.js"></script>
+</head>
+<body class="projects-page">
+  <div class="decorative-shapes" aria-hidden="true"></div>
+  <a class="skip-link sr-only sr-only-focusable" href="#main">Aller au contenu principal</a>
+  <header class="site-header">
+    <div class="header-grid">
+      <div class="header-left"><span class="logo">MG</span></div>
+      <h1 class="site-title">Projet IE — Dino Game</h1>
+      <nav class="header-right" aria-label="Navigation principale">
+        <ul class="nav">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="a-propos.html">À Propos</a></li>
+          <li><a href="projets.html" class="active">Projets</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="admin-login.html" title="Page d'administration">Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="section" aria-labelledby="project-title">
+    <section class="hero-grid" style="margin-bottom:16px;">
+      <figure class="hero-photo">
+        <img src="images/projects/IE.jpeg" alt="Mini jeu Dino Game" />
+      </figure>
+      <div class="hero-text hero-intro">
+        <h2 id="project-title">Mini jeu type Dino Game</h2>
+        <p class="intro-text">Projet SAE IE en binôme : développement d'un mini jeu inspiré du Dino Game de Chrome, mêlant programmation, graphismes simples et gestion des collisions.</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:8px;">
+          <a class="btn-download" href="projets.html">
+            <span class="btn-text">← Retour aux projets</span>
+          </a>
+          <a class="btn-download" href="https://github.com/Maxencegrge/Dino-game-.git" target="_blank" rel="noopener noreferrer">
+            <span class="btn-text">Code source</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-card" style="margin-bottom:16px;">
+      <h3>Rôles & tâches</h3>
+      <ul style="margin-left:18px; line-height:1.7;">
+        <li>Programmation du gameplay : déplacements, sauts et gestion des collisions.</li>
+        <li>Création des assets simples et intégration des sprites.</li>
+        <li>Gestion des scores et boucle de jeu fluide.</li>
+      </ul>
+    </section>
+
+    <section class="about-card">
+      <h3>Résultats</h3>
+      <ul style="margin-left:18px; line-height:1.7;">
+        <li>Prototype jouable et stable.</li>
+        <li>Base de code prête pour ajouter de nouvelles mécaniques.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer"><small>© <span id="year"></span> Maxence Grégoire. Tous droits réservés.</small></footer>
+  <script>(function(){var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();})();</script>
+</body>
+</html>

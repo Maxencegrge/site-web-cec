@@ -1,7 +1,7 @@
 /* Secondary stylesheet: simple overrides */
 :root{
-  /* Alternate accent color */
-  --primary: #ff6b6b;
+  /* Alternate accent color (align with violet sombre) */
+  --primary: #4b2c82;
   
   /* Typographie (inherit from style.css) */
   --font-primary: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;

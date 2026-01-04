@@ -6,7 +6,17 @@ function getAllProjectsWithFallback() {
   let parsed = [];
   if (stored) {
     try {
-      parsed = JSON.parse(stored);
+      let patched = false;
+      parsed = JSON.parse(stored).map(p => {
+        if (p.image === 'images/projects/projet banc de test .jpeg') {
+          patched = true;
+          return { ...p, image: 'images/projects/projet-banc-de-test.jpeg' };
+        }
+        return p;
+      });
+      if (patched) {
+        localStorage.setItem('projects', JSON.stringify(parsed));
+      }
     } catch (e) {
       parsed = [];
     }
@@ -23,31 +33,36 @@ function getAllProjectsWithFallback() {
         id: 1,
         title: 'Projet EN',
         description: "J'ai conçu et simulé un filtre de lissage conforme au cahier des charges, en respectant la bande passante imposée et la structure de Rauch. J'ai ensuite participé au routage du circuit imprimé et à son implantation, puis j'ai testé le filtre avec la carte Nucleo pour vérifier son rôle dans la chaîne d'acquisition audio et valider son fonctionnement avant intégration dans le système complet.",
-        image: 'images/projects/EN.jpeg'
+        image: 'images/projects/EN.jpeg',
+        link: 'project-en.html'
       },
       {
         id: 2,
         title: 'Projet banc de test',
         description: "J'ai caractérisé une ligne microstrip, réalisé des mesures HF sur un capteur de liquide et étudié l'impact d'une fiole sur l'admittance. J'ai aussi analysé la documentation de l'ARV et rédigé une fiche d'aide expliquant comment reproduire les tests manuels, étape préparatoire à l'automatisation sous Python.",
-        image: 'images/projects/projet banc de test .jpeg'
+        image: 'images/projects/projet-banc-de-test.jpeg',
+        link: 'project-banc-de-test.html'
       },
       {
         id: 3,
         title: 'SmartCar',
         description: "Carte électronique dédiée, microcontrôleur embarqué et pilotage à distance.",
-        image: 'images/projects/projet-rm.jpeg'
+        image: 'images/projects/projet-rm.jpeg',
+        link: 'project-smartcar.html'
       },
       {
         id: 4,
         title: 'Projet ECG',
         description: "Création d'un ECG en groupe : acquisition du signal, filtrage analogique et affichage.",
-        image: 'images/projects/ECG.jpeg'
+        image: 'images/projects/ECG.jpeg',
+        link: 'project-ecg.html'
       },
       {
         id: 5,
         title: 'Projet IE — Dino Game',
         description: "Dans le cadre de notre SAE IE à l'IUT GEII Toulouse, en collaboration avec Nathan Boumadi, nous avons développé un petit jeu inspiré du célèbre Dino Game de Google Chrome. Un projet mêlant programmation et créativité.",
-        image: 'images/projects/IE.jpeg'
+        image: 'images/projects/IE.jpeg',
+        link: 'project-dino-game.html'
       }
     ];
   }
@@ -59,6 +74,7 @@ function loadFeaturedProject() {
   const heroImage = document.getElementById('hero-image');
   const heroTitle = document.getElementById('hero-project-title');
   const heroDesc = document.getElementById('hero-project-desc');
+  const heroLink = document.getElementById('hero-link');
   
   if (!heroImage || !heroTitle || !heroDesc) return;
   
@@ -85,6 +101,17 @@ function loadFeaturedProject() {
     heroImage.alt = featuredProject.title;
     heroTitle.textContent = featuredProject.title;
     heroDesc.textContent = featuredProject.description;
+    if (heroLink) {
+      const fallbackLink = {
+        1: 'project-en.html',
+        2: 'project-banc-de-test.html',
+        3: 'project-smartcar.html',
+        4: 'project-ecg.html',
+        5: 'project-dino-game.html'
+      }[featuredProject.id];
+      heroLink.href = featuredProject.link || fallbackLink || 'projets.html';
+      heroLink.title = featuredProject.title;
+    }
   }
 }
 
@@ -109,6 +136,17 @@ function loadRecentProjectsPage() {
   
   // Filtrer les projets récents
   const recentProjects = projects.filter(p => recentProjectIds.includes(p.id));
+  const recentWithLinks = recentProjects.map(p => {
+    if (p.link) return p;
+    const fallbackLink = {
+      1: 'project-en.html',
+      2: 'project-banc-de-test.html',
+      3: 'project-smartcar.html',
+      4: 'project-ecg.html',
+      5: 'project-dino-game.html'
+    }[p.id];
+    return { ...p, link: fallbackLink || 'projets.html' };
+  });
   
   // Si pas assez de projets, utiliser les premiers
   if (recentProjects.length === 0 && projects.length > 0) {
@@ -116,17 +154,18 @@ function loadRecentProjectsPage() {
   }
   
   // Limiter à 2 projets
-  const displayProjects = recentProjects.slice(0, 2);
+  const displayProjects = recentWithLinks.slice(0, 2);
   
   // Générer le HTML pour les projets récents
   if (displayProjects.length > 0) {
     recentGrid.innerHTML = displayProjects.map(project => `
       <article class="card">
-        <div class="card-thumb" aria-hidden="true">
+        <a href="${project.link || 'projets.html'}" class="card-thumb" aria-label="${project.title}">
           <img src="${project.image}" alt="${project.title}" onerror="this.src='images/projects/placeholder.jpeg'" />
-        </div>
+          <span class="card-overlay">${project.title}</span>
+        </a>
         <div class="card-body">
-          <h3 class="card-title">${project.title}</h3>
+          <h3 class="card-title"><a href="${project.link || 'projets.html'}">${project.title}</a></h3>
           <p class="card-desc">${project.description}</p>
         </div>
       </article>
@@ -157,16 +196,28 @@ function loadGalleryProjects() {
   
   // Filtrer les projets pour exclure les projets récents
   const galleryProjects = projects.filter(p => !recentProjectIds.includes(p.id));
+  const galleryWithLinks = galleryProjects.map(p => {
+    if (p.link) return p;
+    const fallbackLink = {
+      1: 'project-en.html',
+      2: 'project-banc-de-test.html',
+      3: 'project-smartcar.html',
+      4: 'project-ecg.html',
+      5: 'project-dino-game.html'
+    }[p.id];
+    return { ...p, link: fallbackLink || 'projets.html' };
+  });
   
   // Générer le HTML pour la galerie complète (sans les projets récents)
   if (galleryProjects.length > 0) {
-    galleryGrid.innerHTML = galleryProjects.map(project => `
+    galleryGrid.innerHTML = galleryWithLinks.map(project => `
       <article class="card">
-        <div class="card-thumb" aria-hidden="true">
+        <a href="${project.link || 'projets.html'}" class="card-thumb" aria-label="${project.title}">
           <img src="${project.image}" alt="${project.title}" onerror="this.src='images/projects/placeholder.jpeg'" />
-        </div>
+          <span class="card-overlay">${project.title}</span>
+        </a>
         <div class="card-body">
-          <h3 class="card-title">${project.title}</h3>
+          <h3 class="card-title"><a href="${project.link || 'projets.html'}">${project.title}</a></h3>
           <p class="card-desc">${project.description}</p>
         </div>
       </article>

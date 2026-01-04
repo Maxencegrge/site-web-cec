@@ -14,7 +14,7 @@ const ProjectManager = {
       id: 2,
       title: 'Projet banc de test',
       description: 'J\'ai caractérisé une ligne microstrip, réalisé des mesures HF sur un capteur de liquide et étudié l\'impact d\'une fiole sur l\'admittance. J\'ai aussi analysé la documentation de l\'ARV et rédigé une fiche d\'aide expliquant comment reproduire les tests manuels, étape préparatoire à l\'automatisation sous Python.',
-      image: 'images/projects/projet banc de test .jpeg'
+      image: 'images/projects/projet-banc-de-test.jpeg'
     },
     {
       id: 3,
