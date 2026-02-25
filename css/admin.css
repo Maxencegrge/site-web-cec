@@ -194,12 +194,12 @@
 
 .project-item.dragging {
   opacity: 0.5;
-  background: rgba(108, 99, 255, 0.1);
+  background: rgba(var(--primary-rgb), 0.1);
 }
 
 .project-item.drag-over {
   border-color: var(--primary);
-  background: rgba(108, 99, 255, 0.05);
+  background: rgba(var(--primary-rgb), 0.06);
 }
 
 .project-thumb {
@@ -207,7 +207,7 @@
   height: 80px;
   border-radius: 6px;
   overflow: hidden;
-  background: #f0f0f0;
+  background: var(--surface);
 }
 
 .project-thumb img {
@@ -247,8 +247,8 @@
 
 .btn-delete {
   padding: 8px 12px;
-  background: #ff4444;
-  color: #fff;
+  background: var(--danger);
+  color: var(--text-inverse);
   border: none;
   border-radius: 6px;
   font-weight: 600;
@@ -258,7 +258,7 @@
 }
 
 .btn-delete:hover {
-  background: #cc0000;
+  background: #ef4444;
 }
 
 .btn-recent {
@@ -378,8 +378,8 @@
   top: 24px;
   right: 24px;
   padding: 10px 16px;
-  background: #ff4444;
-  color: #fff;
+  background: var(--danger);
+  color: var(--text-inverse);
   border: none;
   border-radius: 8px;
   font-weight: 600;
@@ -390,7 +390,7 @@
 }
 
 .btn-logout:hover {
-  background: #cc0000;
+  background: #ef4444;
   transform: translateY(-2px);
 }
 

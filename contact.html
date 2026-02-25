@@ -25,7 +25,6 @@
   <!-- Migration des chemins d'images -->
   <script src="js/migrate-paths.js"></script>
   <!-- Bascule mode sombre/clair -->
-  <script src="js/dark-mode-toggle.js"></script>
 </head>
 <body>
 
@@ -159,7 +158,57 @@
 
   <!-- ===== FOOTER ===== -->
   <footer class="site-footer">
-    <small>© <span id="year"></span> Maxence Grégoire. Tous droits réservés.</small>
+    <div class="footer-content">
+      <!-- Section gauche : École -->
+      <div class="footer-section footer-school">
+        <h3>Formation</h3>
+        <p>
+          <strong>IUT Paul Sabatier</strong><br>
+          BUT GEII - 2ème année<br>
+          Spécialité Électronique et Systèmes Embarqués<br>
+          <a href="https://iut-ge2i.univ-tlse3.fr/integer-notre-formation" target="_blank" rel="noopener noreferrer">Découvrir la formation →</a>
+        </p>
+      </div>
+
+      <!-- Section centre : Adresse -->
+      <div class="footer-section footer-address">
+        <h3>Localisation</h3>
+        <p>
+          115c route de Narbonne<br>
+          31100 Toulouse, France
+        </p>
+      </div>
+
+      <!-- Section droite : Contacts -->
+      <div class="footer-section footer-contact">
+        <h3>Me contacter</h3>
+        <ul class="footer-contact-list">
+          <li>
+            <a href="mailto:maxence.gregoire.perso@gmail.com">
+              <span class="contact-icon">📧</span>
+              maxence.gregoire.perso@gmail.com
+            </a>
+          </li>
+          <li>
+            <a href="tel:+33768933100">
+              <span class="contact-icon">📱</span>
+              07 68 93 31 00
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/maxence-gregoire-8345722ba/" target="_blank" rel="noopener noreferrer">
+              <span class="contact-icon">💼</span>
+              LinkedIn
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <small>© <span id="year"></span> Maxence Grégoire. Tous droits réservés.</small>
+    </div>
   </footer>
 
   <script>

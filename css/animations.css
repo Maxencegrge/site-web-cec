@@ -514,10 +514,3 @@ html {
 * {
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
-
-/* Dark Mode Animation */
-@media (prefers-color-scheme: dark) {
-  * {
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-  }
-}

@@ -1,14 +1,4 @@
 /* Secondary stylesheet: simple overrides */
-:root{
-  /* Alternate accent color (align with violet sombre) */
-  --primary: #4b2c82;
-  
-  /* Typographie (inherit from style.css) */
-  --font-primary: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Playfair Display", Georgia, serif;
-  --font-accent: "Roboto", sans-serif;
-}
-
 /* Slightly bolder section titles */
 .section-title{ letter-spacing: 0.2px; }
 
@@ -82,7 +72,7 @@
 .photos-viewport {
   overflow: hidden;
   border-radius: 12px;
-  background: #f0f0f0;
+  background: var(--bg);
 }
 .photos-track {
   display: grid;
@@ -108,7 +98,7 @@
 .photos-dots { display: flex; gap: 8px; }
 .photos-dots .dot {
   width: 10px; height: 10px; border-radius: 50%;
-  background: #cfcfe0; border: none; cursor: pointer;
+  background: var(--border); border: none; cursor: pointer;
 }
 .photos-dots .dot.is-active { background: var(--primary); }
 
@@ -118,9 +108,9 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
-.grid-2x2 .card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+.grid-2x2 .card { background: var(--surface); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
 .grid-2x2 .card-thumb img { width: 100%; height: 180px; object-fit: cover; }
-.grid-2x2 .card-thumb.placeholder { background: #e7e7ee; height: 180px; }
+.grid-2x2 .card-thumb.placeholder { background: var(--border); height: 180px; }
 .grid-2x2 .card-body { padding: 12px 14px; }
 .grid-2x2 .card-title { font-weight: 600; margin-bottom: 6px; }
 .grid-2x2 .card-desc { color: var(--muted); }

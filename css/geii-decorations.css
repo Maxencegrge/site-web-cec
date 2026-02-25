@@ -346,15 +346,3 @@
     opacity: 0.04;
   }
 }
-
-/* === DARK MODE === */
-@media (prefers-color-scheme: dark) {
-  .circuit-trace,
-  .wave,
-  .component,
-  .hex-grid,
-  .atom,
-  .signal-wave {
-    opacity: 0.15;
-  }
-}

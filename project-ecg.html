@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Projet ECG — Maxence Grégoire</title>
-  <meta name="description" content="Projet ECG : acquisition du signal, filtrage analogique et affichage." />
+  <title>Projet ECG (Électrocardiogramme) — Maxence Grégoire</title>
+  <meta name="description" content="Projet ECG (Électrocardiogramme) : acquisition du signal, filtrage analogique, amplification différentielle et affichage." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&family=Roboto:wght@500;700&display=swap" rel="stylesheet" />
@@ -16,7 +16,6 @@
   <link rel="stylesheet" href="css/responsive.css" />
   <script src="js/theme-manager.js?v=2"></script>
   <script src="js/migrate-paths.js"></script>
-  <script src="js/dark-mode-toggle.js"></script>
 </head>
 <body class="projects-page">
   <div class="decorative-shapes" aria-hidden="true"></div>
@@ -24,7 +23,7 @@
   <header class="site-header">
     <div class="header-grid">
       <div class="header-left"><span class="logo">MG</span></div>
-      <h1 class="site-title">Projet ECG</h1>
+      <h1 class="site-title">Projet ECG — Électrocardiogramme</h1>
       <nav class="header-right" aria-label="Navigation principale">
         <ul class="nav">
           <li><a href="index.html">Accueil</a></li>
@@ -43,8 +42,8 @@
         <img src="images/projects/ECG.jpeg" alt="Projet ECG" />
       </figure>
       <div class="hero-text hero-intro">
-        <h2 id="project-title">Acquisition et affichage ECG</h2>
-        <p class="intro-text">Acquisition du signal cardiaque, filtrage analogique, amplification et affichage. Projet en équipe pour réaliser une chaîne complète de mesure ECG.</p>
+        <h2 id="project-title">ECG (Électrocardiogramme) — Acquisition et affichage</h2>
+        <p class="intro-text">Conception d'une chaîne complète d'acquisition ECG avec amplificateur différentiel. Objectif : amplifier et filtrer les signaux cardiaques faibles pour un affichage lisible et exploitable.</p>
         <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:8px;">
           <a class="btn-download" href="projets.html">
             <span class="btn-text">← Retour aux projets</span>
@@ -54,11 +53,45 @@
     </section>
 
     <section class="about-card" style="margin-bottom:16px;">
+      <h3>Introduction</h3>
+      <p>Ce projet en équipe vise à concevoir une chaîne complète d'acquisition ECG. Le cœur du projet est la <strong>conception d'un amplificateur différentiel</strong> permettant d'amplifier les signaux cardiaques faibles (quelques millivolts) captés au niveau de la peau. Ces signaux doivent être amplifiés de façon significative tout en éliminant le bruit et les interférences pour obtenir un tracé ECG propre et lisible sur le système d'affichage.</p>
+    </section>
+
+    <section class="about-card" style="margin-bottom:16px;">
+      <h3>Objectifs techniques</h3>
+      <p><strong>Amplificateur différentiel :</strong> Concevoir un étage d'amplification qui rejette le bruit commun (interférences, 50 Hz du secteur) tout en amplifiant le signal ECG différentiel. Le gain doit être adapté pour passer de quelques mV en entrée à un signal exploitable en sortie.</p>
+      <p><strong>Filtrage :</strong> Mettre en place des filtres passe-bande pour éliminer les fréquences hors de la bande utile de l'ECG (0.05 - 100 Hz environ).</p>
+      <p><strong>Affichage stable :</strong> Assurer un tracé ECG lisible et stable sans artefacts visuels.</p>
+    </section>
+
+    <section class="hero-grid" style="margin-bottom:16px;">
+      <figure class="hero-photo" style="max-width:250px;">
+        <img src="images/projects/aplificateur de signal ECG.jpeg" alt="Amplificateur de signal ECG" />
+      </figure>
+      <div class="hero-text">
+        <h3>Amplificateur de signal ECG</h3>
+        <p>Le schéma présenté illustre l'amplificateur différentiel conçu pour le projet. Cet étage d'amplification permet de passer des signaux très faibles captés au niveau de la peau (quelques millivolts) à un signal d'amplitude suffisante pour être traité et affiché. L'utilisation d'amplificateurs opérationnels de précision garantit une amplification linéaire avec un faible bruit résiduel et un excellent taux de réjection du mode commun.</p>
+      </div>
+    </section>
+
+    <section class="hero-grid" style="margin-bottom:16px;">
+      <div class="hero-text">
+        <h3>Conception de l'amplificateur</h3>
+        <p>Cette image montre les étapes de conception et de réalisation de l'amplificateur différentiel. Du schéma théorique aux composants intégrés sur la carte, chaque étape a été minutieusement planifiée pour assurer une performance optimale. La conception tient compte des contraintes pratiques : encombrement réduit, stabilité thermique, immunité aux bruits externes, et facilité d'intégration dans la chaîne ECG complète.</p>
+      </div>
+      <figure class="hero-photo">
+        <img src="images/projects/conceptionampli.jpeg" alt="Conception de l'amplificateur" />
+      </figure>
+    </section>
+
+    <section class="about-card" style="margin-bottom:16px;">
       <h3>Rôles & tâches</h3>
       <ul style="margin-left:18px; line-height:1.7;">
-        <li>Choix et intégration des étages de filtrage et d'amplification.</li>
-        <li>Tests de bruit et ajustement du gain pour la lisibilité du signal.</li>
-        <li>Validation de l'acquisition et affichage stable du tracé ECG.</li>
+        <li>Design et simulation de l'amplificateur différentiel (calcul des gains, résistances, capacités).</li>
+        <li>Choix des composants (op-amps, résistances de précision) pour minimiser le bruit.</li>
+        <li>Intégration des étages de filtrage analogique.</li>
+        <li>Tests et validation : mesure du gain réel, taux de réjection du mode commun (CMRR), bruit résiduel.</li>
+        <li>Ajustement itératif du schéma pour atteindre les spécifications.</li>
       </ul>
     </section>
 
@@ -71,7 +104,59 @@
     </section>
   </main>
 
-  <footer class="site-footer"><small>© <span id="year"></span> Maxence Grégoire. Tous droits réservés.</small></footer>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <!-- Section gauche : École -->
+      <div class="footer-section footer-school">
+        <h3>Formation</h3>
+        <p>
+          <strong>IUT Paul Sabatier</strong><br>
+          BUT GEII - 2ème année<br>
+          Spécialité Électronique et Systèmes Embarqués<br>
+          <a href="https://iut-ge2i.univ-tlse3.fr/integer-notre-formation" target="_blank" rel="noopener noreferrer">Découvrir la formation →</a>
+        </p>
+      </div>
+
+      <!-- Section centre : Adresse -->
+      <div class="footer-section footer-address">
+        <h3>Localisation</h3>
+        <p>
+          115c route de Narbonne<br>
+          31100 Toulouse, France
+        </p>
+      </div>
+
+      <!-- Section droite : Contacts -->
+      <div class="footer-section footer-contact">
+        <h3>Me contacter</h3>
+        <ul class="footer-contact-list">
+          <li>
+            <a href="mailto:maxence.gregoire.perso@gmail.com">
+              <span class="contact-icon">📧</span>
+              maxence.gregoire.perso@gmail.com
+            </a>
+          </li>
+          <li>
+            <a href="tel:+33768933100">
+              <span class="contact-icon">📱</span>
+              07 68 93 31 00
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/maxence-gregoire-8345722ba/" target="_blank" rel="noopener noreferrer">
+              <span class="contact-icon">💼</span>
+              LinkedIn
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <small>© <span id="year"></span> Maxence Grégoire. Tous droits réservés.</small>
+    </div>
+  </footer>
   <script>(function(){var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();})();</script>
 </body>
 </html>

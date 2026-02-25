@@ -16,7 +16,6 @@
   <link rel="stylesheet" href="css/responsive.css" />
   <script src="js/theme-manager.js?v=2"></script>
   <script src="js/migrate-paths.js"></script>
-  <script src="js/dark-mode-toggle.js"></script>
 </head>
 <body class="projects-page">
   <div class="decorative-shapes" aria-hidden="true"></div>
@@ -57,24 +56,120 @@
     </section>
 
     <section class="about-card" style="margin-bottom:16px;">
+      <h3>Introduction</h3>
+      <p>Dans le cadre de notre SAE IE à l’IUT GEII Toulouse, avec Nathan Boumadi, nous avons développé un petit jeu inspiré du célèbre Dino Game de Google Chrome. Le projet est réalisé sur microcontrôleur avec affichage graphique et commandes tactiles.</p>
+    </section>
+
+    <section class="about-card" style="margin-bottom:16px;">
+      <h3>Objectif du projet</h3>
+      <p>Créer un jeu interactif sur microcontrôleur en combinant un écran TFT ILI9341 pour l’affichage, un capteur tactile capacitif MPR121 pour les commandes, et une logique de jeu en C++ sous Arduino IDE.</p>
+    </section>
+
+    <section class="about-card" style="margin-bottom:16px;">
+      <h3>Fonctionnalités principales</h3>
+      <ul style="margin-left:18px; line-height:1.7;">
+        <li>Gestion tactile (saut, pause, menu, règles, meilleur score).</li>
+        <li>Animation du dinosaure et détection des collisions.</li>
+        <li>Affichage dynamique du score et vitesse progressive.</li>
+        <li>Interface complète avec menus et écran de game over.</li>
+      </ul>
+    </section>
+
+    <section class="about-card" style="margin-bottom:16px;">
+      <h3>Écrans du jeu</h3>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:16px; margin-top:12px;">
+        <figure style="text-align:center; margin:0;">
+          <img src="images/projects/menu.jpeg" alt="Écran menu" style="max-width:100%; height:auto; border-radius:8px; max-height:200px; object-fit:cover;" />
+          <figcaption style="font-size:0.85rem; color:var(--muted); margin-top:8px;">Menu principal</figcaption>
+        </figure>
+        <figure style="text-align:center; margin:0;">
+          <img src="images/projects/en jeux.jpeg" alt="Écran de jeu" style="max-width:100%; height:auto; border-radius:8px; max-height:200px; object-fit:cover;" />
+          <figcaption style="font-size:0.85rem; color:var(--muted); margin-top:8px;">Gameplay en cours</figcaption>
+        </figure>
+        <figure style="text-align:center; margin:0;">
+          <img src="images/projects/gameover.jpeg" alt="Écran game over" style="max-width:100%; height:auto; border-radius:8px; max-height:200px; object-fit:cover;" />
+          <figcaption style="font-size:0.85rem; color:var(--muted); margin-top:8px;">Écran Game Over</figcaption>
+        </figure>
+        <figure style="text-align:center; margin:0;">
+          <img src="images/projects/score.jpeg" alt="Affichage du score" style="max-width:100%; height:auto; border-radius:8px; max-height:200px; object-fit:cover;" />
+          <figcaption style="font-size:0.85rem; color:var(--muted); margin-top:8px;">Affichage du score</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="about-card" style="margin-bottom:16px;">
       <h3>Rôles & tâches</h3>
       <ul style="margin-left:18px; line-height:1.7;">
-        <li>Programmation du gameplay : déplacements, sauts et gestion des collisions.</li>
-        <li>Création des assets simples et intégration des sprites.</li>
-        <li>Gestion des scores et boucle de jeu fluide.</li>
+        <li>Développement de la logique de jeu en C++ (Arduino IDE).</li>
+        <li>Intégration de l’écran TFT ILI9341 pour l’affichage graphique.</li>
+        <li>Mise en place des commandes tactiles avec le MPR121.</li>
+        <li>Tests, débogage et ajustements des interactions.</li>
       </ul>
     </section>
 
     <section class="about-card">
-      <h3>Résultats</h3>
+      <h3>Ce que le projet nous a apporté</h3>
       <ul style="margin-left:18px; line-height:1.7;">
-        <li>Prototype jouable et stable.</li>
-        <li>Base de code prête pour ajouter de nouvelles mécaniques.</li>
+        <li>Approfondir nos connaissances en programmation embarquée.</li>
+        <li>Manipuler des composants électroniques communicants (SPI, I2C).</li>
+        <li>Développer un esprit de collaboration et de débogage en équipe.</li>
       </ul>
     </section>
   </main>
 
-  <footer class="site-footer"><small>© <span id="year"></span> Maxence Grégoire. Tous droits réservés.</small></footer>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <!-- Section gauche : École -->
+      <div class="footer-section footer-school">
+        <h3>Formation</h3>
+        <p>
+          <strong>IUT Paul Sabatier</strong><br>
+          BUT GEII - 2ème année<br>
+          Spécialité Électronique et Systèmes Embarqués<br>
+          <a href="https://iut-ge2i.univ-tlse3.fr/integer-notre-formation" target="_blank" rel="noopener noreferrer">Découvrir la formation →</a>
+        </p>
+      </div>
+
+      <!-- Section centre : Adresse -->
+      <div class="footer-section footer-address">
+        <h3>Localisation</h3>
+        <p>
+          115c route de Narbonne<br>
+          31100 Toulouse, France
+        </p>
+      </div>
+
+      <!-- Section droite : Contacts -->
+      <div class="footer-section footer-contact">
+        <h3>Me contacter</h3>
+        <ul class="footer-contact-list">
+          <li>
+            <a href="mailto:maxence.gregoire.perso@gmail.com">
+              <span class="contact-icon">📧</span>
+              maxence.gregoire.perso@gmail.com
+            </a>
+          </li>
+          <li>
+            <a href="tel:+33768933100">
+              <span class="contact-icon">📱</span>
+              07 68 93 31 00
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/maxence-gregoire-8345722ba/" target="_blank" rel="noopener noreferrer">
+              <span class="contact-icon">💼</span>
+              LinkedIn
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <small>© <span id="year"></span> Maxence Grégoire. Tous droits réservés.</small>
+    </div>
+  </footer>
   <script>(function(){var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();})();</script>
 </body>
 </html>
